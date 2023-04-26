@@ -36,6 +36,21 @@ export default {
         "slide-bottom": "slide-bottom-frame 0.4s ease normal",
         "progress": "progress-frame ease normal",
       },
+      colors: {
+        "pre-header": "#343434",
+        "header": "#ff0045",
+        "newsletter": "#343434", // shopping cart tem isso tambem
+        "footer": "#454545",
+        "gray": "#555555",
+        "gray-100": "#FFFFFF",
+        "text-color-primary": "#ff0045",
+        "text-color-secord": "#666666",
+        "text-color-white": "#ffffff"
+      },
+      fontFamily: {
+        "firaSans": ["Fira Sans", "system-ui"],
+        "Lato": ["Lato"],
+      },
       keyframes: {
         "slide-left-frame": {
           from: { transform: "translateX(100%)" },

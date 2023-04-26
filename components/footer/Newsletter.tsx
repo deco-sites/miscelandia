@@ -1,11 +1,11 @@
 function Newsletter() {
   return (
-    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-20">
+    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-20 ">
       <div class="flex flex-col gap-2 max-w-[400px]">
-        <span class="font-medium text-2xl text-primary-content">
+        <span class="font-Lato text-2xl text-primary-content">
           Cadastre-se
         </span>
-        <span class="text-sm text-primary-content">
+        <span class="text-sm text-primary-content font-firaSans">
           Fique por dentro das novidades e ganhe 15% de desconto na primeira
           compra. Para mais informações clique aqui.
         </span>

@@ -15,8 +15,7 @@ declare global {
   }
 }
 
-const CHECKOUT_URL =
-  "https://bravtexfashionstore.vtexcommercestable.com.br/checkout";
+const CHECKOUT_URL = "https://miscelandia.vtexcommercestable.com.br/checkout";
 
 function Cart() {
   const { displayCart } = useUI();
