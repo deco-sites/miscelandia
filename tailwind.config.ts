@@ -43,6 +43,7 @@ export default {
         "footer": "#454545",
         "gray": "#555555",
         "gray-100": "#FFFFFF",
+        "default": "#ff0045",
         "text-color-primary": "#ff0045",
         "text-color-secord": "#666666",
         "text-color-white": "#ffffff"
