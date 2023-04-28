@@ -2577,6 +2577,67 @@
       "format": "image-uri",
       "title": "Image"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckNhcmRzLnRzeA==@Image": {
+      "type": "object",
+      "properties": {
+        "imgDesktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "Imagem Desktop",
+          "title": "Img Desktop"
+        },
+        "imgMobile": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "Imagem Mobile",
+          "title": "Img Mobile"
+        },
+        "alt": {
+          "type": "string",
+          "description": "alt da imagem",
+          "title": "Alt"
+        },
+        "title": {
+          "type": "string",
+          "description": "title da imagem",
+          "title": "Title"
+        },
+        "href": {
+          "type": "string",
+          "description": "link da imagem",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "imgDesktop",
+        "imgMobile",
+        "alt",
+        "title",
+        "href"
+      ],
+      "title": "Image"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckNhcmRzLnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "primaryBanner": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckNhcmRzLnRzeA==@Image",
+          "title": "Primary Banner"
+        },
+        "secordBanner": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckNhcmRzLnRzeA==@Image",
+          "title": "Secord Banner"
+        },
+        "thirdBanner": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckNhcmRzLnRzeA==@Image",
+          "title": "Third Banner"
+        }
+      },
+      "required": [
+        "primaryBanner",
+        "secordBanner",
+        "thirdBanner"
+      ],
+      "title": "deco-sites/miscelandia/components/ui/BannerCards.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckdyaWQudHN4@Banner": {
       "type": "object",
       "properties": {
@@ -5158,6 +5219,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYW5uZXJDYXJkLnRzeA==": {
+      "title": "deco-sites/miscelandia/sections/BannerCard.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0Jhbm5lckNhcmRzLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/miscelandia/sections/BannerCard.tsx"
+          ],
+          "default": "deco-sites/miscelandia/sections/BannerCard.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYW5uZXJHcmlkLnRzeA==": {
       "title": "deco-sites/miscelandia/sections/BannerGrid.tsx",
       "type": "object",
@@ -6041,6 +6123,9 @@
         },
         {
           "$ref": "#/definitions/JGxpdmUvc2VjdGlvbnMvVXNlU2xvdC50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYW5uZXJDYXJkLnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYW5uZXJHcmlkLnRzeA=="

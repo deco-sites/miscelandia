@@ -100,7 +100,6 @@ function ProductCard({ product, preload, itemListName }: Props) {
             {formatPrice(price, offers!.priceCurrency!)}
           </span>
         </div>
-        {console.log(seller)}
         <AddToCartButton
           skuId={productID}
           sellerId={seller? seller :"1"}
