@@ -102,7 +102,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
         </div>
         <AddToCartButton
           skuId={productID}
-          sellerId={seller? seller :"1"}
+          sellerId={seller ? seller : "1"}
           price={price ?? 0}
           discount={price && listPrice ? listPrice - price : 0}
           name={product.name ?? ""}
