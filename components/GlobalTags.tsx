@@ -6,6 +6,9 @@ function GlobalTags() {
       {/* Tailwind v3 CSS file */}
       <link href={asset("/main.css")} rel="stylesheet" />
 
+      {/* Custom CSS */}
+      <link href={asset("/custom.css")} rel="stylesheet" />
+
       {/* Icons */}
       <link
         rel="icon"

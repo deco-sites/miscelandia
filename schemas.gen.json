@@ -4114,6 +4114,64 @@
       ],
       "title": "deco-sites/miscelandia/components/search/SearchResult.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1NlbGxlclNsaWRlci50c3g=@Seller": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "imagem da marca",
+          "title": "Image"
+        },
+        "alt": {
+          "type": "string",
+          "description": "alt da imagem",
+          "title": "Alt"
+        },
+        "title": {
+          "type": "string",
+          "description": "title da imagem",
+          "title": "Title"
+        },
+        "href": {
+          "type": "string",
+          "description": "link da marca",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "image",
+        "alt",
+        "title",
+        "href"
+      ],
+      "title": "Seller"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1NlbGxlclNsaWRlci50c3g=@Seller[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1NlbGxlclNsaWRlci50c3g=@Seller"
+      },
+      "title": "Seller[]"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1NlbGxlclNsaWRlci50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Titulo",
+          "title": "Title"
+        },
+        "marcas": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1NlbGxlclNsaWRlci50c3g=@Seller[]",
+          "description": "Marcas",
+          "title": "Marcas"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "deco-sites/miscelandia/components/ui/SellerSlider.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1doYXRzQXBwLnRzeA==@Props": {
       "type": "object",
       "properties": {
@@ -5508,6 +5566,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9TZWxsZXJTbGlkZXIudHN4": {
+      "title": "deco-sites/miscelandia/sections/SellerSlider.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL1NlbGxlclNsaWRlci50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/miscelandia/sections/SellerSlider.tsx"
+          ],
+          "default": "deco-sites/miscelandia/sections/SellerSlider.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9XaGF0c0FwcC50c3g=": {
       "title": "deco-sites/miscelandia/sections/WhatsApp.tsx",
       "type": "object",
@@ -6165,6 +6244,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9TZWFyY2hSZXN1bHQudHN4"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9TZWxsZXJTbGlkZXIudHN4"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9XaGF0c0FwcC50c3g="
