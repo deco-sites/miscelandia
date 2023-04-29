@@ -37,8 +37,12 @@ function FeatureHighlights(
                 strokeWidth={2}
               />
               <div class="flex flex-col w-full gap-1">
-                <span class="font-medium text-base font-firaSans text-center text-text-color-secord">{title}</span>
-                <span class="text-xs text-center font-firaSans text-text-color-secord">{description}</span>
+                <span class="font-medium text-base font-firaSans text-center text-text-color-secord">
+                  {title}
+                </span>
+                <span class="text-xs text-center font-firaSans text-text-color-secord">
+                  {description}
+                </span>
               </div>
             </div>
           ))}
