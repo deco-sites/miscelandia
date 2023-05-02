@@ -3740,15 +3740,88 @@
       },
       "title": "Section[]"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Rede": {
+      "type": "object",
+      "properties": {
+        "img": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "Imagem",
+          "title": "Img"
+        },
+        "alt": {
+          "type": "string",
+          "description": "alt",
+          "title": "Alt"
+        },
+        "titleI": {
+          "type": "string",
+          "description": "titulo",
+          "title": "Title I"
+        },
+        "href": {
+          "type": "string",
+          "description": "link",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "img",
+        "alt",
+        "titleI",
+        "href"
+      ],
+      "title": "Rede"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@NewsletterProps": {
+      "type": "object",
+      "properties": {
+        "titleN": {
+          "type": "string",
+          "description": "Titulo",
+          "title": "Title N"
+        },
+        "content": {
+          "type": "string",
+          "description": "Conteudo",
+          "title": "Content"
+        },
+        "firstIcon": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Rede",
+          "description": "rede social",
+          "title": "First Icon"
+        },
+        "secordIcon": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Rede",
+          "description": "rede social",
+          "title": "Secord Icon"
+        },
+        "thirdIcon": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Rede",
+          "description": "rede social",
+          "title": "Third Icon"
+        }
+      },
+      "required": [
+        "titleN",
+        "content"
+      ],
+      "title": "NewsletterProps"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Props": {
       "type": "object",
       "properties": {
         "sections": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Section[]",
           "title": "Sections"
+        },
+        "newsletter": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@NewsletterProps",
+          "title": "Newsletter"
         }
       },
-      "required": [],
+      "required": [
+        "newsletter"
+      ],
       "title": "deco-sites/miscelandia/components/footer/Footer.tsx@Props"
     },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3NlYXJjaC9TZWFyY2hiYXIudHN4@EditableProps": {

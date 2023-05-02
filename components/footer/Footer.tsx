@@ -1,9 +1,9 @@
 import Icon, {
   AvailableIcons,
 } from "deco-sites/fashion/components/ui/Icon.tsx";
-
-import Newsletter from "./Newsletter.tsx";
 import type { ComponentChildren } from "preact";
+import Newsletter from "./Newsletter.tsx";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export type IconItem = { icon: AvailableIcons };
 export type StringItem = {
@@ -51,20 +51,47 @@ function FooterContainer(
     children: ComponentChildren;
   },
 ) {
-  return <div class={`py-6 px-4 sm:py-12 sm:px-0 ${_class}`}>{children}</div>;
+  return (
+    <div class={`py-6 px-4 sm:py-12 sm:px-0 bg-newsletter ${_class}`}>
+      {children}
+    </div>
+  );
 }
-
+export interface Rede {
+  /** @description Imagem */
+  img: LiveImage;
+  /** @description alt */
+  alt: string;
+  /** @description titulo */
+  titleI: string;
+  /** @description link */
+  href: string;
+}
+export interface NewsletterProps {
+  /** @description Titulo */
+  titleN: string;
+  /** @description Conteudo */
+  content: string;
+  /** @description rede social*/
+  firstIcon?: Rede;
+  /** @description rede social*/
+  secordIcon?: Rede;
+  /** @description rede social*/
+  thirdIcon?: Rede;
+}
 export interface Props {
   sections?: Section[];
+
+  newsletter: NewsletterProps;
 }
 
-function Footer({ sections = [] }: Props) {
+function Footer({ sections = [], newsletter }: Props) {
   return (
     <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
       <div>
         <div class="container w-full flex flex-col divide-y divide-primary-content">
           <FooterContainer>
-            <Newsletter />
+            <Newsletter newsletter={newsletter} />
           </FooterContainer>
 
           <FooterContainer>
