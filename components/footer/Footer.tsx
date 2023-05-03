@@ -13,28 +13,35 @@ export type StringItem = {
 
 export type Item = StringItem | IconItem;
 
-export type Section = {
+export type Icons = {
+  prevIcon?: AvailableIcons;
   label: string;
-  children: Item[];
+  href: string;
 };
 
-const isIcon = (item: Item): item is IconItem =>
-  // deno-lint-ignore no-explicit-any
-  typeof (item as any)?.icon === "string";
+export type Section = {
+  label: string;
+  children?: Icons[];
+};
 
-function SectionItem({ item }: { item: Item }) {
+function SectionItem({ item }: { item: Icons }) {
   return (
-    <span class="text-primary-content">
-      {isIcon(item)
+    <span class="uppercase font-firaSans text-sm font-light text-text-color-white hover:text-default">
+      {item.prevIcon
         ? (
-          <div class="border-base-100 border border-solid py-1.5 px-2.5">
-            <Icon
-              id={item.icon}
-              width={25}
-              height={20}
-              strokeWidth={0.01}
-            />
-          </div>
+          <a class="flex flex-row items-center" href={item.href}>
+            <div class="">
+              <Icon
+                id={item.prevIcon}
+                width={25}
+                height={20}
+                strokeWidth={0.01}
+              />
+            </div>
+            <span>
+              {item.label}
+            </span>
+          </a>
         )
         : (
           <a href={item.href}>
@@ -52,7 +59,7 @@ function FooterContainer(
   },
 ) {
   return (
-    <div class={`py-6 px-4 sm:py-12 sm:px-0 bg-newsletter ${_class}`}>
+    <div class={`py-6 sm:py-7 sm:px-0  ${_class}`}>
       {children}
     </div>
   );
@@ -79,37 +86,61 @@ export interface NewsletterProps {
   /** @description rede social*/
   thirdIcon?: Rede;
 }
+
+export interface LogoFooter {
+  /** @description logo */
+  logo: LiveImage;
+  /** @description alt */
+  alt: string;
+  /** @description title */
+  title: string;
+  /** @description link */
+  href?: string;
+  /** @description text */
+  text: string;
+}
 export interface Props {
   sections?: Section[];
 
   newsletter: NewsletterProps;
+
+  logo?: LogoFooter;
 }
 
-function Footer({ sections = [], newsletter }: Props) {
+function Footer({ sections = [], newsletter, logo }: Props) {
   return (
-    <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
+    <footer class="w-full bg-primary flex flex-col">
       <div>
-        <div class="container w-full flex flex-col divide-y divide-primary-content">
-          <FooterContainer>
+        <div class="w-full flex flex-col border-b-1 border-gray-100">
+          <FooterContainer class="bg-newsletter px-4">
             <Newsletter newsletter={newsletter} />
           </FooterContainer>
 
-          <FooterContainer>
+          <FooterContainer class="bg-footer  px-8 border-b-2 border-default border-solid">
             {/* Desktop view */}
-            <ul class="hidden sm:flex flex-row gap-20">
+            <ul class="hidden container sm:flex flex-row gap-6 first:border-none last:border-none justify-around">
+              <li class="w-full">
+                <a href={logo?.href}>
+                  <image
+                    src={logo?.logo}
+                    alt={logo?.alt}
+                    title={logo?.title}
+                    width={201}
+                    height={168}
+                  />
+                </a>
+              </li>
               {sections.map((section) => (
-                <li>
+                <li class="border-r-[1px] pr-6 border-white first:border-none last:border-r-0 w-full">
                   <div>
-                    <span class="font-medium text-xl text-primary-content">
+                    <span class="text-lg uppercase font-firaSans font-semibold text-text-color-white">
                       {section.label}
                     </span>
 
                     <ul
-                      class={`flex ${
-                        isIcon(section.children[0]) ? "flex-row" : "flex-col"
-                      } gap-2 pt-2 flex-wrap`}
+                      class={`flex flex-col gap-1 pt-4`}
                     >
-                      {section.children.map((item) => (
+                      {section.children?.map((item) => (
                         <li>
                           <SectionItem item={item} />
                         </li>
@@ -121,27 +152,39 @@ function Footer({ sections = [], newsletter }: Props) {
             </ul>
 
             {/* Mobile view */}
-            <ul class="flex flex-col sm:hidden sm:flex-row gap-4">
+            <div class="flex justify-center items-center w-full sm:hidden">
+              <a href={logo?.href}>
+                <image
+                  src={logo?.logo}
+                  alt={logo?.alt}
+                  title={logo?.title}
+                  width={156}
+                  height={132}
+                />
+              </a>
+              {
+                /* <span>
+                {logo?.text}
+              </span> */
+              }
+            </div>
+            <ul class="flex flex-col sm:hidden sm:flex-row gap-6">
               {sections.map((section) => (
                 <li>
-                  <span class="text-primary-content">
-                    <details>
-                      <summary>
-                        {section.label}
-                      </summary>
+                  <span class="text-text-color-white ">
+                    <span class="font-firaSans font-bold text-lg uppercase">
+                      {section.label}
+                    </span>
 
-                      <ul
-                        class={`flex ${
-                          isIcon(section.children[0]) ? "flex-row" : "flex-col"
-                        } gap-2 px-2 pt-2`}
-                      >
-                        {section.children.map((item) => (
-                          <li>
-                            <SectionItem item={item} />
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
+                    <ul
+                      class={`flex flex-col gap-5 pt-4`}
+                    >
+                      {section.children?.map((item) => (
+                        <li>
+                          <SectionItem item={item} />
+                        </li>
+                      ))}
+                    </ul>
                   </span>
                 </li>
               ))}

@@ -31,7 +31,7 @@ function Newsletter(
   { newsletter }: Newsletter,
 ) {
   return (
-    <div class="flex flex-col items-center gap-6 sm:gap-5 py-5 bg-newsletter">
+    <div class=" container flex flex-col items-center gap-6 sm:gap-5 py-5 bg-newsletter">
       <div class="flex flex-col gap-2 max-w-[400px] text-center">
         <span class="font-Lato text-3xl uppercase font-extrabold leading-7 text-text-color-primary">
           {newsletter?.titleN}

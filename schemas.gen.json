@@ -3532,28 +3532,10 @@
       ],
       "title": "deco-sites/miscelandia/components/ui/Features.tsx@Props"
     },
-    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@StringItem": {
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Icons": {
       "type": "object",
       "properties": {
-        "label": {
-          "type": "string",
-          "title": "Label"
-        },
-        "href": {
-          "type": "string",
-          "title": "Href"
-        }
-      },
-      "required": [
-        "label",
-        "href"
-      ],
-      "title": "StringItem"
-    },
-    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@IconItem": {
-      "type": "object",
-      "properties": {
-        "icon": {
+        "prevIcon": {
           "anyOf": [
             {
               "type": "string",
@@ -3689,31 +3671,29 @@
             }
           ],
           "type": "string",
-          "title": "Icon"
+          "title": "Prev Icon"
+        },
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
         }
       },
       "required": [
-        "icon"
+        "label",
+        "href"
       ],
-      "title": "IconItem"
+      "title": "Icons"
     },
-    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@IconItem|StringItem": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@StringItem"
-        },
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@IconItem"
-        }
-      ],
-      "title": "IconItem|StringItem"
-    },
-    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@IconItem|StringItem[]": {
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Icons[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@IconItem|StringItem"
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Icons"
       },
-      "title": "IconItem|StringItem[]"
+      "title": "Icons[]"
     },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Section": {
       "type": "object",
@@ -3723,13 +3703,12 @@
           "title": "Label"
         },
         "children": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@IconItem|StringItem[]",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Icons[]",
           "title": "Children"
         }
       },
       "required": [
-        "label",
-        "children"
+        "label"
       ],
       "title": "Section"
     },
@@ -3807,6 +3786,46 @@
       ],
       "title": "NewsletterProps"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@LogoFooter": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "logo",
+          "title": "Logo"
+        },
+        "alt": {
+          "type": "string",
+          "description": "alt",
+          "title": "Alt"
+        },
+        "title": {
+          "type": "string",
+          "description": "title",
+          "title": "Title"
+        },
+        "href": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "link",
+          "title": "Href"
+        },
+        "text": {
+          "type": "string",
+          "description": "text",
+          "title": "Text"
+        }
+      },
+      "required": [
+        "logo",
+        "alt",
+        "title",
+        "text"
+      ],
+      "title": "LogoFooter"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Props": {
       "type": "object",
       "properties": {
@@ -3817,6 +3836,10 @@
         "newsletter": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@NewsletterProps",
           "title": "Newsletter"
+        },
+        "logo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@LogoFooter",
+          "title": "Logo"
         }
       },
       "required": [
