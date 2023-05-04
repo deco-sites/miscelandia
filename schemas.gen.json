@@ -3826,6 +3826,66 @@
       ],
       "title": "LogoFooter"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@ItemImg": {
+      "type": "object",
+      "properties": {
+        "img": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Img"
+        },
+        "alt": {
+          "type": "string",
+          "title": "Alt"
+        },
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "width": {
+          "type": "number",
+          "title": "Width"
+        },
+        "height": {
+          "type": "number",
+          "title": "Height"
+        }
+      },
+      "required": [
+        "img",
+        "alt",
+        "title",
+        "width",
+        "height"
+      ],
+      "title": "ItemImg"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@imgProps": {
+      "type": "object",
+      "properties": {
+        "tittle": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Tittle"
+        },
+        "imgs": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@ItemImg",
+          "title": "Imgs"
+        }
+      },
+      "required": [
+        "imgs"
+      ],
+      "title": "imgProps"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@imgProps[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@imgProps"
+      },
+      "title": "imgProps[]"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@Props": {
       "type": "object",
       "properties": {
@@ -3840,6 +3900,10 @@
         "logo": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@LogoFooter",
           "title": "Logo"
+        },
+        "InfosFooter": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@imgProps[]",
+          "title": " Infos Footer"
         }
       },
       "required": [

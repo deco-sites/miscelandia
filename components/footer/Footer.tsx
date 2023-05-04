@@ -1,6 +1,7 @@
 import Icon, {
   AvailableIcons,
 } from "deco-sites/fashion/components/ui/Icon.tsx";
+import { asset, Head } from "$fresh/runtime.ts";
 import type { ComponentChildren } from "preact";
 import Newsletter from "./Newsletter.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
@@ -64,6 +65,35 @@ function FooterContainer(
     </div>
   );
 }
+
+export type ItemImg = {
+  img: LiveImage;
+  alt: string;
+  title: string;
+  width: number;
+  height: number;
+};
+
+export interface imgProps {
+  tittle?: string;
+  imgs: ItemImg;
+}
+
+function ItemImg({ imgs }: { imgs: ItemImg }) {
+  const { img, alt, title, width, height } = imgs;
+  return (
+    <>
+      <image
+        alt={img}
+        src={alt}
+        srcSet={img}
+        title={title}
+        width={width}
+        height={height}
+      />
+    </>
+  );
+}
 export interface Rede {
   /** @description Imagem */
   img: LiveImage;
@@ -99,17 +129,20 @@ export interface LogoFooter {
   /** @description text */
   text: string;
 }
+
 export interface Props {
   sections?: Section[];
 
   newsletter: NewsletterProps;
 
   logo?: LogoFooter;
+
+  InfosFooter?: imgProps[];
 }
 
-function Footer({ sections = [], newsletter, logo }: Props) {
+function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
   return (
-    <footer class="w-full bg-primary flex flex-col">
+    <footer class="w-full flex flex-col">
       <div>
         <div class="w-full flex flex-col border-b-1 border-gray-100">
           <FooterContainer class="bg-newsletter px-4">
@@ -194,52 +227,49 @@ function Footer({ sections = [], newsletter, logo }: Props) {
       </div>
 
       <div>
-        <div class="container w-full">
-          <FooterContainer class="flex justify-between w-full">
-            <span class="flex items-center gap-1 text-primary-content">
-              Powered by{" "}
-              <a
-                href="https://www.deco.cx"
-                aria-label="powered by https://www.deco.cx"
-              >
-                <Icon id="Deco" height={20} width={60} strokeWidth={0.01} />
-              </a>
-            </span>
-
-            <ul class="flex items-center justify-center gap-2">
-              <li>
-                <a
-                  href="https://www.instagram.com/deco.cx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram logo"
-                >
-                  <Icon
-                    class="text-primary-content"
-                    width={32}
-                    height={32}
-                    id="Instagram"
-                    strokeWidth={1}
+        <div class="sm:px-10 w-full bg-white">
+          <FooterContainer class="flex justify-center items-center bg-white">
+            <div class="flex flex-col justify-center items-center">
+              <div class="sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:grid-flow-row sm:gap-x-6">
+                {InfosFooter?.map((infos) => (
+                  <div class="sm:last:col-start-2">
+                    <h2 class="text-center text-lg tracking-wider font-firaSans text-text-color-secord font-light mt-8 mb-3 sm:mt-0 uppercase">
+                      {infos?.tittle}
+                    </h2>
+                    <div>
+                      <div>
+                        <ItemImg imgs={infos.imgs} />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div class="flex flex-col justify-center items-center w-full sm:flex-row sm:justify-around pt-4 sm:pb-2">
+                <image
+                  src={asset("/logo-direitos.svg")}
+                  width={90}
+                  height={20}
+                  loading="lazy"
+                />
+                <span class="font-firaSans font-text-base text-sm mt-2 mb-6 sm:m-0">
+                  Todos los derechos reservados Miscelandia 2022
+                </span>
+                <div class="flex flex-row justify-center items-center gap-5">
+                  <image
+                    src={asset("/vtex.png")}
+                    width={66}
+                    height={25}
+                    loading="lazy"
                   />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://www.deco.cx/discord"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Discord logo"
-                >
-                  <Icon
-                    class="text-primary-content"
-                    width={32}
-                    height={32}
-                    id="Discord"
-                    strokeWidth={5}
+                  <image
+                    src={asset("/logo-jump.png")}
+                    width={35}
+                    height={27}
+                    loading="lazy"
                   />
-                </a>
-              </li>
-            </ul>
+                </div>
+              </div>
+            </div>
           </FooterContainer>
         </div>
       </div>
