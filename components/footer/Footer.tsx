@@ -171,7 +171,6 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
                     </span>
 
                     <ul
-
                       class={`flex flex-col gap-1 pt-4`}
                     >
                       {section.children?.map((item) => (
