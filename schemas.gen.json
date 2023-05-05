@@ -3488,6 +3488,10 @@
             {
               "type": "string",
               "const": "ArrowsPointingOut"
+            },
+            {
+              "type": "string",
+              "const": "ArrowUp"
             }
           ],
           "type": "string",
@@ -3668,6 +3672,10 @@
             {
               "type": "string",
               "const": "ArrowsPointingOut"
+            },
+            {
+              "type": "string",
+              "const": "ArrowUp"
             }
           ],
           "type": "string",
@@ -5515,6 +5523,22 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYWNrVG9Ub3AudHN4": {
+      "title": "deco-sites/miscelandia/sections/BackToTop.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/miscelandia/sections/BackToTop.tsx"
+          ],
+          "default": "deco-sites/miscelandia/sections/BackToTop.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYW5uZXJDYXJkLnRzeA==": {
       "title": "deco-sites/miscelandia/sections/BannerCard.tsx",
       "type": "object",
@@ -6482,6 +6506,9 @@
         },
         {
           "$ref": "#/definitions/JGxpdmUvc2VjdGlvbnMvVXNlU2xvdC50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYWNrVG9Ub3AudHN4"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9CYW5uZXJDYXJkLnRzeA=="
