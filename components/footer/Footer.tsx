@@ -151,8 +151,8 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
 
           <FooterContainer class="bg-footer  px-8 border-b-2 border-default border-solid">
             {/* Desktop view */}
-            <ul class="hidden container sm:flex flex-row gap-6 first:border-none last:border-none justify-around">
-              <li class="w-full">
+            <ul class="hidden container sm:flex flex-row gap-6 justify-around">
+              <li class="w-full flex justify-center items-center">
                 <a href={logo?.href}>
                   <image
                     src={logo?.logo}
@@ -164,13 +164,14 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
                 </a>
               </li>
               {sections.map((section) => (
-                <li class="border-r-[1px] pr-6 border-white first:border-none last:border-r-0 w-full">
-                  <div>
+                <li class=" border-white border-r last:border-r-0 last:justify-start pr-2 last:pr-0 flex justify-center w-full">
+                  <div class="">
                     <span class="text-lg uppercase font-firaSans font-semibold text-text-color-white">
                       {section.label}
                     </span>
 
                     <ul
+
                       class={`flex flex-col gap-1 pt-4`}
                     >
                       {section.children?.map((item) => (
@@ -185,7 +186,7 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
             </ul>
 
             {/* Mobile view */}
-            <div class="flex justify-center items-center w-full sm:hidden">
+            <div class="flex justify-center items-center mb-3 w-full sm:hidden">
               <a href={logo?.href}>
                 <image
                   src={logo?.logo}
