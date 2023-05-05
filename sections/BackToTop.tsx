@@ -1,1 +1,1 @@
-export { default } from "../components/ui/BackToTop.tsx"
+export { default } from "../components/ui/BackToTop.tsx";
