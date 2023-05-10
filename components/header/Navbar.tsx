@@ -5,6 +5,9 @@ import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import type { INavItem } from "./NavItem.tsx";
 import type { Props as SearchbarProps } from "deco-sites/fashion/components/search/Searchbar.tsx";
+import Loading from "deco-sites/fashion/components/ui/Loading.tsx";
+import { lazy, Suspense } from "preact/compat";
+import Searchbar from "../search/Searchbar.tsx";
 
 function Navbar({ items, searchbar }: {
   items: INavItem[];
@@ -13,25 +16,27 @@ function Navbar({ items, searchbar }: {
   return (
     <>
       {/* Mobile Version */}
-      <div
-        style={{ height: navbarHeight }}
-        class="md:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 gap-2"
-      >
-        <HeaderButton variant="menu" />
-
-        <a
-          href="/"
-          class="flex-grow inline-flex items-center"
-          style={{ minHeight: navbarHeight }}
-          aria-label="Store logo"
+      <div class="flex flex-col w-full bg-header">
+        <div
+          style={{ height: navbarHeight }}
+          class="md:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 gap-2"
         >
-          <Icon id="Logo" width={126} height={16} />
-        </a>
+          <HeaderButton variant="menu" />
 
-        <div class="flex gap-1">
-          <HeaderButton variant="search" />
-          <HeaderButton variant="cart" />
+          <a
+            href="/"
+            class="flex-grow inline-flex items-center"
+            style={{ minHeight: navbarHeight }}
+            aria-label="Store logo"
+          >
+            <Icon id="Logo" width={126} height={16} />
+          </a>
+
+          <div class="flex gap-1">
+            <HeaderButton variant="cart" />
+          </div>
         </div>
+        <HeaderSearchMenu searchbar={searchbar} />
       </div>
 
       {/* Desktop Version */}
