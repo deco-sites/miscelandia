@@ -3492,6 +3492,18 @@
             {
               "type": "string",
               "const": "ArrowUp"
+            },
+            {
+              "type": "string",
+              "const": "Money"
+            },
+            {
+              "type": "string",
+              "const": "ShoppingCar"
+            },
+            {
+              "type": "string",
+              "const": "Email"
             }
           ],
           "type": "string",
@@ -3676,6 +3688,18 @@
             {
               "type": "string",
               "const": "ArrowUp"
+            },
+            {
+              "type": "string",
+              "const": "Money"
+            },
+            {
+              "type": "string",
+              "const": "ShoppingCar"
+            },
+            {
+              "type": "string",
+              "const": "Email"
             }
           ],
           "type": "string",
@@ -3960,12 +3984,16 @@
       "required": [],
       "title": "EditableProps"
     },
-    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@NavItem": {
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem": {
       "type": "object",
       "properties": {
         "label": {
           "type": "string",
           "title": "Label"
+        },
+        "colorBorder": {
+          "type": "string",
+          "title": "Color Border"
         },
         "href": {
           "type": "string",
@@ -3974,50 +4002,22 @@
         "children": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "label": {
-                "type": "string",
-                "title": "Label"
-              },
-              "href": {
-                "type": "string",
-                "title": "Href"
-              },
-              "children": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "type": "string",
-                      "title": "Label"
-                    },
-                    "href": {
-                      "type": "string",
-                      "title": "Href"
-                    }
-                  },
-                  "required": [
-                    "label",
-                    "href"
-                  ]
-                },
-                "title": "Children"
-              }
-            },
-            "required": [
-              "label",
-              "href"
-            ]
+            "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem"
           },
           "title": "Children"
+        },
+        "linkMore": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem",
+          "title": "Link More"
         },
         "image": {
           "type": "object",
           "properties": {
             "src": {
-              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+              "type": [
+                "string",
+                "null"
+              ],
               "title": "Src"
             },
             "alt": {
@@ -4034,16 +4034,17 @@
       },
       "required": [
         "label",
+        "colorBorder",
         "href"
       ],
-      "title": "NavItem"
+      "title": "INavItem"
     },
-    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@NavItem[]": {
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@NavItem"
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem"
       },
-      "title": "NavItem[]"
+      "title": "INavItem[]"
     },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Props": {
       "type": "object",
@@ -4060,7 +4061,7 @@
           "title": "Searchbar"
         },
         "navItems": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@NavItem[]",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem[]",
           "title": "Nav Items",
           "description": "Navigation items used both on mobile and desktop menus"
         },

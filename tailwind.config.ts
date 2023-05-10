@@ -73,6 +73,14 @@ export default {
             "--dot-progress": "100%",
           },
         },
+        "wiggle": {
+          from: {
+            "width": "0%",
+          },
+          to: {
+            "width": "100%",
+          },
+        },
       },
     },
   },

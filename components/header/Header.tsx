@@ -8,21 +8,13 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
-export interface NavItem {
+export interface INavItem {
   label: string;
+  colorBorder: string;
   href: string;
-  children?: Array<{
-    label: string;
-    href: string;
-    children?: Array<{
-      label: string;
-      href: string;
-    }>;
-  }>;
-  image?: {
-    src?: Image;
-    alt?: string;
-  };
+  children?: INavItem[];
+  linkMore?: INavItem;
+  image?: { src?: string; alt?: string };
 }
 
 export interface Props {
@@ -33,7 +25,7 @@ export interface Props {
    * @title Navigation items
    * @description Navigation items used both on mobile and desktop menus
    */
-  navItems?: NavItem[];
+  navItems?: INavItem[];
 
   /**
    * @title Product suggestions
