@@ -21,7 +21,7 @@ export default function HeaderSearchMenu({ searchbar }: Props) {
       class={`${
         open ? "block border-y border-base-200 shadow" : "hidden"
       } absolute left-0 top-0 w-screen z-50 bg-base-100 border-none bg-header`}
-      style={open ? {marginTop: "89px"} : { marginTop: headerHeight }}
+      style={open ? { marginTop: "89px" } : { marginTop: headerHeight }}
     >
       {open && (
         <Suspense fallback={<Loading />}>
