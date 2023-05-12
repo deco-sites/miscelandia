@@ -3503,7 +3503,15 @@
             },
             {
               "type": "string",
+              "const": "ShoppingCarr"
+            },
+            {
+              "type": "string",
               "const": "Email"
+            },
+            {
+              "type": "string",
+              "const": "UserHappy"
             }
           ],
           "type": "string",
@@ -3699,7 +3707,15 @@
             },
             {
               "type": "string",
+              "const": "ShoppingCarr"
+            },
+            {
+              "type": "string",
               "const": "Email"
+            },
+            {
+              "type": "string",
+              "const": "UserHappy"
             }
           ],
           "type": "string",

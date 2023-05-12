@@ -106,7 +106,7 @@ function Controls() {
     <>
       <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
         <Button
-          class="bg-transparent border-transparent hover:bg-transparent hover:border-transparent"
+          class="bg-transparent border-transparent hover:bg-transparent hover:border-transparent p-0"
           data-slide="prev"
           aria-label="Previous item"
         >
@@ -120,7 +120,7 @@ function Controls() {
       </div>
       <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
         <Button
-          class="bg-transparent border-transparent hover:bg-transparent hover:border-transparent"
+          class="bg-transparent border-transparent hover:bg-transparent hover:border-transparent p-0"
           data-slide="next"
           aria-label="Next item"
         >

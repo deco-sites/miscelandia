@@ -109,7 +109,7 @@ function Searchbar({
     : products;
 
   return (
-    <div class="flex flex-col p-4 md:py-6 md:px-20">
+    <div class="flex flex-col p-3 sm:p-0">
       <div class="flex items-center gap-4">
         <form
           id="searchbar"
@@ -178,12 +178,6 @@ function Searchbar({
         </form>
       </div>
       <div class="flex flex-col absolute py-4 px-5 empty:p-0 bg-white w-full right-0 top-[57px] gap-6 divide-y divide-base-200 empty:mt-0 md:flex-row md:divide-y-0">
-        {useEffect(() => {
-          <h1>
-            {suggestions.value}
-            {console.log("suggestion", suggestions)}
-          </h1>;
-        }, [suggestions])}
         {searches && searches.length > 0 && !hasSuggestions && (
           <SearchTermList title="Mais buscados" terms={searches} />
         )}
