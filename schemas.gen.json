@@ -4245,6 +4245,58 @@
       "required": [],
       "title": "deco-sites/miscelandia/components/ui/LinkTree.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Infos": {
+      "type": "object",
+      "properties": {
+        "whatsapp": {
+          "type": "string",
+          "title": "Whatsapp"
+        },
+        "tel": {
+          "type": "string",
+          "title": "Tel"
+        },
+        "service": {
+          "type": "string",
+          "title": "Service"
+        },
+        "comparte": {
+          "type": "object",
+          "properties": {
+            "facebooke": {
+              "type": "string",
+              "title": "Facebooke"
+            },
+            "google": {
+              "type": "string",
+              "title": "Google"
+            },
+            "twitter": {
+              "type": "string",
+              "title": "Twitter"
+            },
+            "pinterwst": {
+              "type": "string",
+              "title": "Pinterwst"
+            }
+          },
+          "required": [
+            "facebooke",
+            "google",
+            "twitter",
+            "pinterwst"
+          ],
+          "title": "Comparte"
+        }
+      },
+      "required": [
+        "whatsapp",
+        "tel",
+        "service",
+        "comparte"
+      ],
+      "title": "Infos"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Props": {
       "type": "object",
       "properties": {
@@ -4270,6 +4322,10 @@
           "type": "string",
           "title": "Variant",
           "description": "Ask for the developer to remove this option since this is here to help development only and should not be used in production"
+        },
+        "infos": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Infos",
+          "title": "Infos"
         }
       },
       "required": [

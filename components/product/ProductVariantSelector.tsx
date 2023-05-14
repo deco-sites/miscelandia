@@ -11,23 +11,21 @@ function VariantSelector({ product, product: { url } }: Props) {
 
   return (
     <ul class="flex flex-col gap-4">
-      {Object.keys(possibilities).map((name) => (
-        <li class="flex flex-col gap-2">
-          <span class="text-sm">{name}</span>
-          <ul class="flex flex-row gap-3">
-            {Object.entries(possibilities[name]).map(([value, [link]]) => (
-              <li>
-                <a href={link}>
-                  <Avatar
-                    content={value}
-                    variant={link === url ? "active" : "default"}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
+      <li class="flex flex-col gap-2">
+        <span class="text-sm">TALLA</span>
+        <ul class="flex flex-row gap-3 flex-wrap">
+          {Object.entries(possibilities["TALLA"]).map(([value, [link]]) => (
+            <li>
+              <a href={link}>
+                <Avatar
+                  content={value}
+                  variant={link === url ? "active" : "default"}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </li>
     </ul>
   );
 }

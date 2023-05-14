@@ -21,7 +21,21 @@ import ProductSelector from "./ProductVariantSelector.tsx";
 import ProductImageZoom from "deco-sites/fashion/islands/ProductImageZoom.tsx";
 import WishlistButton from "../wishlist/WishlistButton.tsx";
 
+import { asset } from "$fresh/runtime.ts";
+
 export type Variant = "front-back" | "slider" | "auto";
+
+export type Infos = {
+  whatsapp: string;
+  tel: string;
+  service: string;
+  comparte: {
+    facebooke: string;
+    google: string;
+    twitter: string;
+    pinterwst: string;
+  };
+};
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -30,10 +44,12 @@ export interface Props {
    * @description Ask for the developer to remove this option since this is here to help development only and should not be used in production
    */
   variant?: Variant;
+
+  infos?: Infos;
 }
 
 const WIDTH = 360;
-const HEIGHT = 500;
+const HEIGHT = 360;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
 
 /**
@@ -49,6 +65,139 @@ function NotFound() {
         </a>
       </div>
     </div>
+  );
+}
+
+function BreadcrumbList({ page }: { page: ProductDetailsPage }) {
+  const {
+    breadcrumbList,
+  } = page;
+
+  return (
+    <div class="flex px-3 py-2 sm:px-9">
+      {/* Breadcrumb */}
+      <Breadcrumb
+        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+      />
+    </div>
+  );
+}
+
+function Brand({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+
+  return (
+    <>
+      <h2 class="uppercase text-text-color-secord text-sm font-semibold font-firaSans">
+        <span>Marca:</span>
+        <span>{product?.brand}</span>
+      </h2>
+    </>
+  );
+}
+
+function Name({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+  const { name } = product;
+
+  return (
+    <>
+      <h1 class="text-xl font-firaSans uppercase">
+        {name}
+      </h1>
+    </>
+  );
+}
+
+function Ref({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+  const { gtin } = product;
+
+  return (
+    <>
+      <p class="text-[#999] text-sm sm:mt-4">
+        <span>Ref:</span>
+        <span>{gtin}</span>
+      </p>
+    </>
+  );
+}
+
+function Price({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+  const { offers } = product;
+  const { price, listPrice } = useOffer(offers);
+
+  return (
+    <>
+      <div class="flex flex-row sm:flex-col py-3 justify-center">
+        <div class="w-full">
+          <span class="text-center text-default text-2xl font-firaSans">
+            {formatPrice(price, offers!.priceCurrency!)}
+          </span>
+        </div>
+        <div class="w-full">
+          <span class="text-lg font-firaSans line-through text-[#666]">
+            {formatPrice(listPrice, offers!.priceCurrency!)}
+          </span>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ProductVariant({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+
+  return (
+    <>
+      <ProductSelector product={product} />
+    </>
+  );
+}
+
+function Buttons({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+  const { offers, productID, isVariantOf } = product;
+  const { seller, price, listPrice } = useOffer(offers);
+
+  return (
+    <>
+      {/* Add to Cart and Favorites button */}
+      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
+        {seller && (
+          <AddToCartButton
+            skuId={productID}
+            sellerId={seller}
+            price={price ?? 0}
+            discount={price && listPrice ? listPrice - price : 0}
+            name={product.name ?? ""}
+            productGroupId={product.isVariantOf?.productGroupID ?? ""}
+          />
+        )}
+        <WishlistButton
+          variant="full"
+          productGroupID={isVariantOf?.productGroupID}
+          productID={productID}
+        />
+      </div>
+    </>
+  );
+}
+
+function Description({ page }: { page: ProductDetailsPage }) {
+  const { product } = page;
+  const { description } = product;
+
+  return (
+    <>
+      <div class="mt-4">
+        <p class="text-lg font-Lato text-text-color-secord">
+          Descripción del producto
+        </p>
+        <p class="text-sm text-text-color-secord ">{description}</p>
+      </div>
+    </>
   );
 }
 
@@ -163,7 +312,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
 function Details({
   page,
   variant,
-}: { page: ProductDetailsPage; variant: Variant }) {
+  infos,
+}: { page: ProductDetailsPage; variant: Variant; infos?: Infos }) {
   const id = `product-image-gallery:${useId()}`;
   const { product: { image: images = [] } } = page;
 
@@ -177,19 +327,28 @@ function Details({
   if (variant === "slider") {
     return (
       <>
+        <BreadcrumbList page={page} />
         <div
           id={id}
-          class={`grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center sm:max-h-[calc(${
+          class={`container grid grid-cols-1 gap-4 sm:grid-cols-[auto_360px] sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
             (HEIGHT / WIDTH).toFixed(2)
           }*40vw)]`}
         >
+          <div class="text-center sm:col-span-2 sm:row-span-1 px-3 sm:row-start-1 sm:flex sm:justify-start sm:text-start sm:flex-col">
+            <Brand page={page} />
+
+            <Name page={page} />
+
+            <Ref page={page} />
+          </div>
+
           {/* Image Slider */}
-          <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
+          <div class="relative sm:col-span-1 sm:row-start-1 sm:col-end-2 sm:row-end-3 max-w-[556px]">
             <Slider class="gap-6">
               {images.map((img, index) => (
                 <Image
-                  class="snap-center min-w-[100vw] sm:min-w-[40vw]"
-                  sizes="(max-width: 640px) 100vw, 40vw"
+                  class="snap-center min-w-[100vw] sm:min-w-[28vw]"
+                  sizes="(max-width: 556px) 100vw, 40vw"
                   style={{ aspectRatio: ASPECT_RATIO }}
                   src={img.url!}
                   alt={img.alternateName}
@@ -202,50 +361,113 @@ function Details({
               ))}
             </Slider>
 
-            <Button
-              class="absolute left-2 top-1/2 btn-circle btn-outline"
-              data-slide="prev"
-              aria-label="Previous"
-            >
-              <Icon size={20} id="ChevronLeft" strokeWidth={3} />
-            </Button>
+            {images.length > 1
+              ? (
+                <>
+                  <Button
+                    class="absolute left-2 top-1/2 btn-circle btn-outline"
+                    data-slide="prev"
+                    aria-label="Previous"
+                  >
+                    <Icon size={20} id="ChevronLeft" strokeWidth={3} />
+                  </Button>
 
-            <Button
-              class="absolute right-2 top-1/2 btn-circle btn-outline"
-              data-slide="next"
-              aria-label="Next"
-            >
-              <Icon size={20} id="ChevronRight" strokeWidth={3} />
-            </Button>
+                  <Button
+                    class="absolute right-2 top-1/2 btn-circle btn-outline"
+                    data-slide="next"
+                    aria-label="Next"
+                  >
+                    <Icon size={20} id="ChevronRight" strokeWidth={3} />
+                  </Button>
 
-            <div class="absolute top-2 right-2 bg-base-100 rounded-full">
-              <ProductImageZoom
-                images={images}
-                width={1280}
-                height={1280 * HEIGHT / WIDTH}
-              />
+                  <div class="absolute top-2 right-2 bg-base-100 rounded-full">
+                    <ProductImageZoom
+                      images={images}
+                      width={1280}
+                      height={1280 * HEIGHT / WIDTH}
+                    />
+                  </div>
+                </>
+              )
+              : ("")}
+          </div>
+          {images.length > 1
+            ? (
+              <>
+                {/* Dots */}
+                <SliderDots class="gap-2 sm:justify-start overflow-auto px-4 sm:px-0 flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
+                  {images.map((img, _) => (
+                    <Image
+                      style={{ aspectRatio: ASPECT_RATIO }}
+                      class="group-disabled:border-base-300 border rounded min-w-[63px] sm:min-w-[100px]"
+                      width={63}
+                      height={87.5}
+                      src={img.url!}
+                      alt={img.alternateName}
+                    />
+                  ))}
+                </SliderDots>
+              </>
+            )
+            : ("")}
+
+          <div class="p-2 sm:col-span-1 sm:row-span-2 sm:row-start-2">
+            <Price page={page} />
+
+            <ProductVariant page={page} />
+
+            <Buttons page={page} />
+
+            <Description page={page} />
+
+            {/* Meios de pagamento */}
+            <div class="flex justify-center sm:mt-2">
+              <img
+                src={asset("/buy-pdp.webp")}
+                alt="meios de pagamento"
+                title="meios de pagmaneto"
+                width={320}
+                height={100}
+              >
+              </img>
+            </div>
+
+            {/* Compra por telefone */}
+            <div class="border-t border-[#666] py-3">
+              <p class="text-default mb-4">Nuevo! compra por teléfono!</p>
+              <div class="flex gap-2">
+                <Icon id="WhatsApp" width={15} height={15}></Icon>
+                <span class="text-sm">{infos?.whatsapp}</span>
+              </div>
+              <div class="flex gap-2">
+                <Icon id="Phone" width={15} height={15}></Icon>
+                <span class="text-sm">{infos?.tel}</span>
+              </div>
+              <p class="text-xs mt-3">{infos?.service}</p>
+            </div>
+
+            {/* Compartilhar */}
+            <div class="w-full flex justify-center gap-3 flex-col items-center border-t border-[#666] p-3">
+              <p>Comparter</p>
+              <div class="flex flex-row gap-3">
+                <a href={infos?.comparte.facebooke}>
+                  <Icon id="Facebook" width={25} height={25}></Icon>
+                </a>
+
+                <a href={infos?.comparte.google}>
+                  <Icon id="Facebook" width={25} height={25}></Icon>
+                </a>
+                <a href={infos?.comparte.twitter}>
+                  <Icon id="Tiktok" width={25} height={25}></Icon>
+                </a>
+                <a href={infos?.comparte.pinterwst}>
+                  <Icon id="Instagram" width={25} height={25}></Icon>
+                </a>
+              </div>
             </div>
           </div>
-
-          {/* Dots */}
-          <SliderDots class="gap-2 sm:justify-start overflow-auto px-4 sm:px-0 flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
-            {images.map((img, _) => (
-              <Image
-                style={{ aspectRatio: ASPECT_RATIO }}
-                class="group-disabled:border-base-300 border rounded min-w-[63px] sm:min-w-[100px]"
-                width={63}
-                height={87.5}
-                src={img.url!}
-                alt={img.alternateName}
-              />
-            ))}
-          </SliderDots>
-
-          {/* Product Info */}
-          <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
-            <ProductInfo page={page} />
-          </div>
         </div>
+
         <SliderJS rootId={id}></SliderJS>
       </>
     );
@@ -285,7 +507,9 @@ function Details({
   );
 }
 
-function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
+function ProductDetails(
+  { page, variant: maybeVar = "auto", infos }: Props,
+) {
   /**
    * Showcase the different product views we have on this template. In case there are less
    * than two images, render a front-back, otherwhise render a slider
@@ -298,8 +522,10 @@ function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
     : maybeVar;
 
   return (
-    <div class="container py-0 sm:py-10">
-      {page ? <Details page={page} variant={variant} /> : <NotFound />}
+    <div class="py-0 sm:py-10">
+      {page
+        ? <Details page={page} variant={variant} infos={infos} />
+        : <NotFound />}
     </div>
   );
 }
