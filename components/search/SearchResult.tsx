@@ -36,7 +36,7 @@ function Result({
 
   return (
     <>
-      <div class="container px-4 sm:py-10">
+      <div class="px-8 sm:py-10">
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
@@ -45,12 +45,23 @@ function Result({
         />
 
         <div class="flex flex-row">
-          {variant === "aside" && filters.length > 0 && (
-            <aside class="hidden sm:block w-min min-w-[250px]">
-              <Filters filters={filters} />
-            </aside>
-          )}
+          <div class="flex flex-col pr-3">
+            <div class="text-2xl p-3 bg-slate-400 rounded-md text-white">
+              <h1>
+                {breadcrumb?.itemListElement[0] ? "true" : "false"}
+              </h1>
+            </div>
+            {variant === "aside" && filters.length > 0 && (
+              <aside class="hidden sm:block w-min min-w-[380px] mt-5">
+                <p class="text-sm">FILTRADO POR:</p>
+                <Filters filters={filters} />
+              </aside>
+            )}
+          </div>
+
           <div class="flex-grow">
+            <div class="border w-full h-[260px] ">
+            </div>
             <ProductGallery products={products} />
           </div>
         </div>

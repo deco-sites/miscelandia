@@ -28,6 +28,8 @@ export interface Props {
 function BannerUI({ banner }: { banner: Banner }) {
   const { title, subtitle, image } = banner;
 
+  console.log("3");
+
   return (
     <div class="grid grid-cols-1 grid-rows-1">
       <Picture preload class="col-start-1 col-span-1 row-start-1 row-span-1">
@@ -66,8 +68,9 @@ function BannerUI({ banner }: { banner: Banner }) {
  * TODO: run the matcher agains the true URL instead on the breadcrumb.
  * This way we can remove the need for a loader. This can be done on live@1.x
  */
-function Banner({ page, banners = [] }: Props) {
-  if (!page || page.breadcrumb.itemListElement.length === 0) {
+function BannerPLP({ page, banners = [] }: Props) {
+  if (!page || page?.breadcrumb.itemListElement.length === 0) {
+    console.log("1", page?.breadcrumb.itemListElement);
     return null;
   }
 
@@ -80,13 +83,12 @@ function Banner({ page, banners = [] }: Props) {
     new RegExp(matcher).test(canonical)
   );
 
-  console.log("plp", canonical, matching);
-
   if (!matching) {
+    console.log("2");
     return null;
   }
 
   return <BannerUI banner={matching} />;
 }
 
-export default Banner;
+export default BannerPLP;
