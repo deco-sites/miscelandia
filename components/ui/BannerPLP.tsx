@@ -80,8 +80,6 @@ function Banner({ page, banners = [] }: Props) {
     new RegExp(matcher).test(canonical)
   );
 
-  console.log("plp", canonical, matching);
-
   if (!matching) {
     return null;
   }

@@ -51,7 +51,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
 
   return (
     <div
-      class="border-[1px] border-slate-300 bg-white hover:shadow-2xl p-2"
+      class="border-[1px] border-slate-300 h-full flex flex-col justify-between  bg-white hover:shadow-2xl p-2"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
@@ -85,7 +85,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
           </ul>
         </figcaption>
       </figure>
-      <div class="card-body p-1">
+      <div class="card-body p-1 flex flex-col justify-between">
         <h2 class="text-xs sm:text-base font-firaSans uppercase text-center text-text-color-secord overflow-hidden">
           {name}
         </h2>

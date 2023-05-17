@@ -9,7 +9,7 @@ function Breadcrumb({ itemListElement = [] }: Props) {
 
   return (
     <div class="text-caption breadcrumbs">
-      <ul class="flex flex-wrap text-text-color-secord uppercase text-sm font-firaSans">
+      <ul class="flex flex-wrap text-text-color-secord uppercase text-sm font-Lato tracking-wide">
         {items
           .filter(({ name, item }) => name && item)
           .map(({ name, item }) => (

@@ -36,23 +36,7 @@ function SearchControls(
           Filtrar
           <Icon id="FilterList" width={16} height={16} />
         </Button>
-        {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
       </div>
-
-      {
-        /* <div >
-        <img
-        src={}
-        srcSet={}
-        alt={}
-        title={}
-        width={}
-        height={}
-
-        >
-        </img>
-      </div> */
-      }
 
       <Modal
         loading="lazy"

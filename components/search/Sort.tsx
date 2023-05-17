@@ -26,7 +26,7 @@ function Sort({ sortOptions }: Props) {
   const sort = useSort();
 
   return (
-    <>
+    <div class="px-3 sm:p-0">
       <span class="text-sm">
         Ordenar por:
       </span>
@@ -42,7 +42,7 @@ function Sort({ sortOptions }: Props) {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 }
 
