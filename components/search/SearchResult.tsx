@@ -104,7 +104,7 @@ function Result({
 
   return (
     <>
-      <div class="w-full first-letter:px-2 sm:py-10">
+      <div class="w-full px-2 sm:px-8 sm:py-10">
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}

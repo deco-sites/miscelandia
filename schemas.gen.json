@@ -4475,8 +4475,7 @@
         }
       },
       "required": [
-        "page",
-        "columns"
+        "page"
       ],
       "title": "deco-sites/miscelandia/components/search/SearchResult.tsx@Props"
     },
