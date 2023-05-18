@@ -80,7 +80,7 @@ export type Props = EditableProps & {
 };
 
 function Searchbar({
-  placeholder = "What are you looking for?",
+  placeholder = "¿Qué estás buscndo?",
   action = "/s",
   name = "q",
   query,
@@ -91,7 +91,6 @@ function Searchbar({
   const searches = _suggestions?.searches;
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { setSearch, suggestions } = useAutocomplete();
-  const [valueRender, setValue] = useState("");
 
   useEffect(() => {
     if (!searchInputRef.current) {
@@ -109,7 +108,7 @@ function Searchbar({
     : products;
 
   return (
-    <div class="flex flex-col p-3 sm:p-0">
+    <div class="flex flex-col p-3 lg:p-0">
       <div class="flex items-center gap-4">
         <form
           id="searchbar"
@@ -177,7 +176,7 @@ function Searchbar({
           </Button>
         </form>
       </div>
-      <div class="flex flex-col absolute py-4 px-5 empty:p-0 bg-white w-full right-0 top-[57px] gap-6 divide-y divide-base-200 empty:mt-0 md:flex-row md:divide-y-0">
+      <div class="flex flex-col absolute py-4 px-5 empty:p-0 bg-white w-full right-0 top-[57px] gap-6 divide-y divide-base-200 empty:mt-0 lg:flex-row lg:divide-y-0">
         {searches && searches.length > 0 && !hasSuggestions && (
           <SearchTermList title="Mais buscados" terms={searches} />
         )}
@@ -189,7 +188,7 @@ function Searchbar({
           />
         )}
         {hasSuggestions && emptySuggestions && (
-          <div class="py-16 md:py-6! flex flex-col gap-4 w-full">
+          <div class="py-16 lg:py-6! flex flex-col gap-4 w-full">
             <span
               class="font-medium text-xl text-center"
               role="heading"
@@ -204,7 +203,7 @@ function Searchbar({
           </div>
         )}
         {_products && !emptySuggestions && (
-          <div class="flex flex-col pt-6 md:pt-0 gap-6 overflow-x-hidden">
+          <div class="flex flex-col pt-6 lg:pt-0 gap-6 overflow-x-hidden">
             <span class="font-medium text-xl px-4">Produtos sugeridos</span>
             <Slider>
               {_products.map((

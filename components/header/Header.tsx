@@ -69,7 +69,7 @@ function Header(
     <>
       <header style={{ height: headerHeight }}>
         <div class="bg-base-100 fixed w-full z-50">
-          <div class="hidden md:flex">
+          <div class="hidden lg:flex">
             <Alert props={alerts} />
           </div>
           <Navbar items={navItems} searchbar={searchbar} />

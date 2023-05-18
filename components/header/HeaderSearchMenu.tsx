@@ -14,7 +14,7 @@ export default function HeaderSearchMenu({ searchbar }: Props) {
   const shouldRender = self?.location;
   return (
     <div
-      class={"w-full"}
+      class={"w-full lg:max-w-[630px]"}
     >
       {shouldRender && (
         <Suspense fallback={<div />}>

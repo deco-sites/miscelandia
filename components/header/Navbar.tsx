@@ -14,31 +14,47 @@ function Navbar({ items, searchbar }: {
   return (
     <>
       {/* Mobile Version */}
-      <div class="flex flex-col w-full bg-header md:hidden">
+      <div class="flex flex-col w-full bg-header lg:hidden">
         <div
           style={{ height: navbarHeight }}
-          class="md:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 pt-4 gap-2"
+          class="lg:hidden flex flex-row justify-between items-center w-full pl-2 pr-6 pt-4 gap-2"
         >
           <HeaderButton variant="menu" />
 
-          <a
-            href="/"
-            class="flex-grow inline-flex items-center justify-center flex-col"
-            style={{ minHeight: navbarHeight }}
-            aria-label="Store logo"
-          >
-            <image
-              width={165}
-              height={25}
-              src={asset("/logo-miscelandia.jpg")}
-              title="logo mislecandia"
-              alt="miscelandia"
+          <div>
+            <a
+              href="/"
+              class="flex-grow inline-flex items-center justify-center flex-col"
+              style={{ minHeight: navbarHeight }}
+              aria-label="Store logo"
             >
-              <span class=" text-sm self-end text-white mr-10">Desde 1975</span>
-            </image>
-          </a>
-
+              <image
+                width={165}
+                height={25}
+                src={asset("/logo-miscelandia.jpg")}
+                title="logo mislecandia"
+                alt="miscelandia"
+              >
+              </image>
+              <span class=" text-sm self-end text-white">
+                Desde 1975
+              </span>
+            </a>
+          </div>
           <div class="flex gap-1">
+            <a
+              class="btn btn-square btn-ghost text-white"
+              href="/wishlist"
+              aria-label="Wishlist"
+            >
+              <Icon
+                id="Heart"
+                width={40}
+                height={40}
+                strokeWidth={2}
+                fill="none"
+              />
+            </a>
             <HeaderButton variant="cart" />
           </div>
         </div>
@@ -47,7 +63,7 @@ function Navbar({ items, searchbar }: {
 
       {/* Desktop Version */}
       <div class="flex flex-col">
-        <div class="hidden md:flex flex-row justify-around items-center w-full pl-2 pr-6 py-2 bg-default">
+        <div class="hidden lg:flex flex-row justify-around items-center w-full pl-2 pr-6 py-2 bg-default">
           <div class="w-auto">
             <a
               href="/"
@@ -91,7 +107,7 @@ function Navbar({ items, searchbar }: {
             <HeaderButton variant="cart" />
           </div>
         </div>
-        <div class=" hidden md:flex bg-white">
+        <div class=" hidden lg:flex bg-white">
           <div class="flex-auto flex justify-center">
             {items.map((item) => <NavItem item={item} />)}
           </div>
