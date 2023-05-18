@@ -30,13 +30,13 @@ function SectionItem({ item }: { item: Icons }) {
     <span class="uppercase font-firaSans text-sm font-light text-text-color-white hover:text-default">
       {item.prevIcon
         ? (
-          <a class="flex flex-row items-center" href={item.href}>
+          <a class="flex flex-row items-center gap-2" href={item.href}>
             <div class="">
               <Icon
                 id={item.prevIcon}
                 width={25}
                 height={20}
-                strokeWidth={0.01}
+                strokeWidth={1}
               />
             </div>
             <span>
