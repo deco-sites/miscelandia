@@ -3030,6 +3030,73 @@
       "required": [],
       "title": "deco-sites/miscelandia/components/ui/BannerCarousel.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0RlcGFydG1lbnRzLnRzeA==@Departament": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        },
+        "imagem": {
+          "type": "object",
+          "properties": {
+            "img": {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+              "title": "Img"
+            },
+            "alt": {
+              "type": "string",
+              "title": "Alt"
+            },
+            "title": {
+              "type": "string",
+              "title": "Title"
+            }
+          },
+          "required": [
+            "img",
+            "alt",
+            "title"
+          ],
+          "title": "Imagem"
+        }
+      },
+      "required": [
+        "title",
+        "href",
+        "imagem"
+      ],
+      "title": "Departament"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0RlcGFydG1lbnRzLnRzeA==@Departament[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0RlcGFydG1lbnRzLnRzeA==@Departament"
+      },
+      "title": "Departament[]"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0RlcGFydG1lbnRzLnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "titleD": {
+          "type": "string",
+          "title": "Title D"
+        },
+        "departaments": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0RlcGFydG1lbnRzLnRzeA==@Departament[]",
+          "title": "Departaments"
+        }
+      },
+      "required": [
+        "titleD",
+        "departaments"
+      ],
+      "title": "deco-sites/miscelandia/components/ui/Departments.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9EZXNpZ25TeXN0ZW0udHN4@Colors": {
       "type": "object",
       "properties": {
@@ -5901,6 +5968,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9EZXBhcnRtYW5ldHMudHN4": {
+      "title": "deco-sites/miscelandia/sections/Departmanets.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3VpL0RlcGFydG1lbnRzLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/miscelandia/sections/Departmanets.tsx"
+          ],
+          "default": "deco-sites/miscelandia/sections/Departmanets.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9EZXNpZ25TeXN0ZW0udHN4": {
       "title": "deco-sites/miscelandia/sections/DesignSystem.tsx",
       "type": "object",
@@ -6789,6 +6877,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9Db29raWVDb25zZW50LnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9EZXBhcnRtYW5ldHMudHN4"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9zZWN0aW9ucy9EZXNpZ25TeXN0ZW0udHN4"

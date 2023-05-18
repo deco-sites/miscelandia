@@ -36,7 +36,7 @@ function NavItem({ item }: { item: INavItem }) {
             style={{
               top: "0px",
               left: "0px",
-              marginTop: "175px",
+              marginTop: "52px",
             }}
           >
             <div
