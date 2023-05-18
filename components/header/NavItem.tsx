@@ -22,7 +22,7 @@ function NavItem({ item }: { item: INavItem }) {
     <li class="group flex items-center group">
       <a
         href={href}
-        class="px-4 py-3 border-b-[5px] hover:bg-slate-400 ease-linear"
+        class="px-4 py-3 border-b-[5px] min-w-[140px] hover:bg-slate-400 ease-linear text-center"
         style={`border-color: ${colorBorder}`}
       >
         <span class=" font-Lato text-base font-bold tracking-wider text-text-color-secord group-hover:text-text-color-primary">

@@ -107,7 +107,7 @@ function Navbar({ items, searchbar }: {
             <HeaderButton variant="cart" />
           </div>
         </div>
-        <div class=" hidden lg:flex bg-white">
+        <div class=" hidden lg:flex bg-white drop-shadow-lg">
           <div class="flex-auto flex justify-center">
             {items.map((item) => <NavItem item={item} />)}
           </div>
