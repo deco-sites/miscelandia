@@ -8,6 +8,7 @@ import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/product
 import { sendEventOnClick } from "deco-sites/fashion/sdk/analytics.ts";
 import type { Product } from "deco-sites/std/commerce/types.ts";
 import AddToCartButton from "./AddToCartButton.tsx";
+import Off from "./Off.tsx";
 
 interface Props {
   product: Product;
@@ -57,8 +58,9 @@ function ProductCard({ product, preload, itemListName }: Props) {
       {...sendEventOnClick(clickEvent)}
     >
       <figure class="relative">
-        <div class="absolute top-0 right-0">
+        <div class="absolute top-0 right-0 text-default w-full flex justify-between">
           <WishlistIcon productGroupID={productGroupID} productID={productID} />
+          <Off product={product} />
         </div>
         <a href={url} aria-label="view product">
           <Image
@@ -90,13 +92,20 @@ function ProductCard({ product, preload, itemListName }: Props) {
           {name}
         </h2>
         <div class="flex flex-col items-center gap-2">
-          <span class="text-base-300 text-[10px] text-xs text-center">
+          {
+            /* <span class="text-base-300 text-[10px] text-xs text-center">
             {offers!.offers[0]?.priceSpecification[8]?.description}
-          </span>
+          </span> */
+          }
           <span class="text-sm font-semibold">
             Marca: {brand}
           </span>
-          <span class="font-firaSans font-bold text-black sm:text-lg">
+          {listPrice != price && (
+            <span class="font-firaSans font-light text-text-color-secord text-sm sm:text-base line-through">
+              {formatPrice(listPrice, offers!.priceCurrency!)}
+            </span>
+          )}
+          <span class="font-firaSans font-bold text-default sm:text-lg">
             {formatPrice(price, offers!.priceCurrency!)}
           </span>
         </div>
