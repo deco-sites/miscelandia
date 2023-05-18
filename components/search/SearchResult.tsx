@@ -89,12 +89,17 @@ function Banner({ page, banners = [] }: Props) {
 
 function H1Page({ page }: { page: ProductListingPage }) {
   const { breadcrumb } = page;
+  const length = breadcrumb.itemListElement.length;
+  if (!length) {
+    return null;
+  }
+
   return (
     <>
       {breadcrumb && (
         <h1>
           {breadcrumb
-            ?.itemListElement[breadcrumb?.itemListElement.length - 1]
+            ?.itemListElement[length - 1]
             .name}
         </h1>
       )}
