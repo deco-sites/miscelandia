@@ -33,8 +33,9 @@ import * as $$$$$$$$14 from "./sections/ProductShelf.tsx";
 import * as $$$$$$$$15 from "./sections/SearchResult.tsx";
 import * as $$$$$$$$16 from "./sections/SellerSlider.tsx";
 import * as $$$$$$$$17 from "./sections/TextInfo.tsx";
-import * as $$$$$$$$18 from "./sections/WhatsApp.tsx";
-import * as $$$$$$$$19 from "./sections/WishlistGallery.tsx";
+import * as $$$$$$$$18 from "./sections/TextSEOPLP.tsx";
+import * as $$$$$$$$19 from "./sections/WhatsApp.tsx";
+import * as $$$$$$$$20 from "./sections/WishlistGallery.tsx";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
 import * as $live_invoke from "$live/routes/live/invoke/index.ts";
@@ -140,8 +141,9 @@ const manifest = {
     "deco-sites/miscelandia/sections/SearchResult.tsx": $$$$$$$$15,
     "deco-sites/miscelandia/sections/SellerSlider.tsx": $$$$$$$$16,
     "deco-sites/miscelandia/sections/TextInfo.tsx": $$$$$$$$17,
-    "deco-sites/miscelandia/sections/WhatsApp.tsx": $$$$$$$$18,
-    "deco-sites/miscelandia/sections/WishlistGallery.tsx": $$$$$$$$19,
+    "deco-sites/miscelandia/sections/TextSEOPLP.tsx": $$$$$$$$18,
+    "deco-sites/miscelandia/sections/WhatsApp.tsx": $$$$$$$$19,
+    "deco-sites/miscelandia/sections/WishlistGallery.tsx": $$$$$$$$20,
     "deco-sites/std/sections/Analytics.tsx": i2$$$3,
     "deco-sites/std/sections/configOCC.global.tsx": i2$$$4,
     "deco-sites/std/sections/configShopify.global.tsx": i2$$$5,

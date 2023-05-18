@@ -4,7 +4,6 @@ import type {
   FilterToggle,
   ProductListingPage,
 } from "deco-sites/std/commerce/types.ts";
-
 interface Props {
   filters: ProductListingPage["filters"];
 }
@@ -49,7 +48,7 @@ function Filters({ filters }: Props) {
       {filters
         .filter(isToggle)
         .map((filter) => (
-          <li class="flex flex-col gap-4 border border-stone-500 p-2 rounded-md bg-white">
+          <li class="flex flex-col gap-4 border text-text-color-secord border-text-color-secord p-2 rounded-md bg-white">
             <details class="relative group">
               <summary class=" uppercase after:content-[''] after:right-0 after:w-2 after:h-2 after:border-default after:border-r after:border-t after:rotate-45 after:absolute after:top-[6px] group-open:after:rotate-[135deg] marker:content-[''] ease-in duration-500 text-sm">
                 {filter.label}

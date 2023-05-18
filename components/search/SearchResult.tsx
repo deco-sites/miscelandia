@@ -87,6 +87,21 @@ function Banner({ page, banners = [] }: Props) {
   return <BannerUI banner={matching} />;
 }
 
+function H1Page({ page }: { page: ProductListingPage }) {
+  const { breadcrumb } = page;
+  return (
+    <>
+      {breadcrumb && (
+        <h1>
+          {breadcrumb
+            ?.itemListElement[breadcrumb?.itemListElement.length - 1]
+            .name}
+        </h1>
+      )}
+    </>
+  );
+}
+
 function NotFound() {
   return (
     <div class="w-full flex justify-center items-center py-10">
@@ -115,22 +130,17 @@ function Result({
         <div class="flex flex-row">
           <div class="flex flex-col sm:pr-3">
             <div class="text-2xl p-3 hidden sm:flex bg-slate-400 rounded-md text-white">
-              <h1>
-                {breadcrumb
-                  ?.itemListElement[breadcrumb?.itemListElement.length - 1]
-                  .name}
-                {console.log("breadcrumb", breadcrumb)}
-              </h1>
+              <H1Page page={page}></H1Page>
             </div>
             {variant === "aside" && filters.length > 0 && (
-              <aside class="hidden sm:block w-min min-w-[255px] mt-5">
-                <p class="text-sm">FILTRADO POR:</p>
+              <aside class="hidden sm:block w-min xl:min-w-[260px] 2xl:min-w-[390px]  mt-5">
+                <p class="text-sm text-text-color-secord mb-2">FILTRADO POR:</p>
                 <Filters filters={filters} />
               </aside>
             )}
           </div>
 
-          <div class="flex-grow">
+          <div class="flex-grow flex flex-col">
             <div class="w-full justify-end flex py-3 items-center sm:order-2">
               {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
             </div>
@@ -139,14 +149,12 @@ function Result({
             </div>
             <div class="text-2xl p-3 mx-3 sm:hidden bg-slate-400 rounded-md text-white">
               <h1>
-                {breadcrumb
-                  ?.itemListElement[breadcrumb?.itemListElement.length - 1]
-                  .name}
-                {console.log("breadcrumb", breadcrumb)}
+                <H1Page page={page}></H1Page>
               </h1>
             </div>
-
-            <ProductGallery products={products} />
+            <div class="order-3">
+              <ProductGallery products={products} />
+            </div>
           </div>
         </div>
 
