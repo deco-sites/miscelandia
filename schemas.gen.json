@@ -3959,6 +3959,54 @@
       ],
       "title": "deco-sites/miscelandia/components/footer/Footer.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Link": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "title": "Link"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Link[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Link"
+      },
+      "title": "Link[]"
+    },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Alert": {
+      "type": "object",
+      "properties": {
+        "whatsapp": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Link",
+          "title": "Whatsapp"
+        },
+        "email": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Link",
+          "title": "Email"
+        },
+        "infos": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Link[]",
+          "title": "Infos"
+        }
+      },
+      "required": [
+        "whatsapp",
+        "email",
+        "infos"
+      ],
+      "title": "Alert"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3NlYXJjaC9TZWFyY2hiYXIudHN4@EditableProps": {
       "type": "object",
       "properties": {
@@ -4018,34 +4066,44 @@
         "children": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem"
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "title": "Label"
+              },
+              "href": {
+                "type": "string",
+                "title": "Href"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "title": "Label"
+                    },
+                    "href": {
+                      "type": "string",
+                      "title": "Href"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ]
+                },
+                "title": "Children"
+              }
+            },
+            "required": [
+              "label",
+              "href"
+            ]
           },
           "title": "Children"
-        },
-        "linkMore": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@INavItem",
-          "title": "Link More"
-        },
-        "image": {
-          "type": "object",
-          "properties": {
-            "src": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "title": "Src"
-            },
-            "alt": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "title": "Alt"
-            }
-          },
-          "required": [],
-          "title": "Image"
         }
       },
       "required": [
@@ -4066,10 +4124,7 @@
       "type": "object",
       "properties": {
         "alerts": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2hlYWRlci9IZWFkZXIudHN4@Alert",
           "title": "Alerts"
         },
         "searchbar": {

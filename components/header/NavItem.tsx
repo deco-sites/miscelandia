@@ -3,15 +3,20 @@ import { headerHeight } from "./constants.ts";
 
 export interface INavItem {
   label: string;
-  colorBorder: string;
+  colorBorder?: string;
   href: string;
-  children?: INavItem[];
-  linkMore?: INavItem;
-  image?: { src?: string; alt?: string };
+  children?: Array<{
+    label: string;
+    href: string;
+    children?: Array<{
+      label: string;
+      href: string;
+    }>;
+  }>;
 }
 
 function NavItem({ item }: { item: INavItem }) {
-  const { href, label, colorBorder, children, linkMore } = item;
+  const { href, label, colorBorder, children } = item;
 
   return (
     <li class="group flex items-center group">
@@ -31,7 +36,7 @@ function NavItem({ item }: { item: INavItem }) {
             style={{
               top: "0px",
               left: "0px",
-              marginTop: "143px",
+              marginTop: "175px",
             }}
           >
             <div
@@ -73,13 +78,13 @@ function NavItem({ item }: { item: INavItem }) {
                           </a>
                         </li>
                       ))}
-                      {node.linkMore && (
+                      {node.children && (
                         <li>
                           <a
                             class="text-text-color-primary underline font-Lato text-base tracking-wide "
-                            href={node.linkMore?.href}
+                            href={node.href}
                           >
-                            <span>{"> " + node.linkMore?.label}</span>
+                            <span>{"> " + node.label}</span>
                           </a>
                         </li>
                       )}

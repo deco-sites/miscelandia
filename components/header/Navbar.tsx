@@ -5,10 +5,7 @@ import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import type { INavItem } from "./NavItem.tsx";
 import type { Props as SearchbarProps } from "deco-sites/fashion/components/search/Searchbar.tsx";
-import Loading from "deco-sites/fashion/components/ui/Loading.tsx";
-import { lazy, Suspense } from "preact/compat";
-import Searchbar from "../search/Searchbar.tsx";
-import { asset, Head } from "$fresh/runtime.ts";
+import { asset } from "$fresh/runtime.ts";
 
 function Navbar({ items, searchbar }: {
   items: INavItem[];

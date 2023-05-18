@@ -47,6 +47,7 @@ export default {
         "text-color-primary": "#ff0045",
         "text-color-secord": "#666",
         "text-color-white": "#ffffff",
+        "links-pre-header": "#b0b0b0",
       },
       fontFamily: {
         "firaSans": ["Fira Sans", "system-ui"],

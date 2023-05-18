@@ -34,7 +34,7 @@ function MenuItem({ item }: { item: INavItem }) {
                   <li class="border-b px-1 mb-3 border-stone-400">
                     <a
                       class="text-base text-default underline"
-                      href={node.linkMore?.href}
+                      href={node.href}
                     >
                       <p>Mostrar mais</p>
                     </a>

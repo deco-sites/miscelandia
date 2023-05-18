@@ -12,13 +12,29 @@ export interface INavItem {
   label: string;
   colorBorder: string;
   href: string;
-  children?: INavItem[];
-  linkMore?: INavItem;
-  image?: { src?: string; alt?: string };
+  children?: Array<{
+    label: string;
+    href: string;
+    children?: Array<{
+      label: string;
+      href: string;
+    }>;
+  }>;
+}
+
+export type Link = {
+  label: string;
+  href: string;
+};
+
+export interface Alert {
+  whatsapp: Link;
+  email: Link;
+  infos: Link[];
 }
 
 export interface Props {
-  alerts: string[];
+  alerts: Alert;
   /** @title Search Bar */
   searchbar?: SearchbarProps;
   /**
@@ -53,7 +69,9 @@ function Header(
     <>
       <header style={{ height: headerHeight }}>
         <div class="bg-base-100 fixed w-full z-50">
-          {/* <Alert alerts={alerts}/> */}
+          <div class="hidden md:flex">
+            <Alert props={alerts} />
+          </div>
           <Navbar items={navItems} searchbar={searchbar} />
         </div>
 

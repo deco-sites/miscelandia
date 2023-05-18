@@ -11,36 +11,16 @@ interface Props {
 }
 
 export default function HeaderSearchMenu({ searchbar }: Props) {
-  const { displaySearchbar } = useUI();
-  const open = window?.matchMedia?.("(min-width: 768px)")?.matches
-    ? false
-    : true;
-
+  const shouldRender = self?.location;
   return (
-    <div class="w-full flex justify-center max-w-[600px]">
-      {open
-        ? (
-          <div
-            class="
-             absolute left-0 top-0 w-screen z-50 bg-base-100 border-none bg-header"
-            style={open ? { marginTop: "73px" } : { marginTop: headerHeight }}
-          >
-            {open && (
-              <Suspense fallback={<Loading />}>
-                <Searchbar {...searchbar} variant="desktop" />
-              </Suspense>
-            )}
-          </div>
-        )
-        : (
-          <div
-            class={"block border-y border-base-200 shadow relative left-0 top-0 w-full bg-base-100 border-none px-3 bg-header"}
-          >
-            <Suspense fallback={<Loading />}>
-              <Searchbar {...searchbar} variant="desktop" />
-            </Suspense>
-          </div>
-        )}
+    <div
+      class={"w-full"}
+    >
+      {shouldRender && (
+        <Suspense fallback={<div />}>
+          <Searchbar {...searchbar} />
+        </Suspense>
+      )}
     </div>
   );
 }
