@@ -17,7 +17,7 @@ function Navbar({ items, searchbar }: {
       <div class="flex flex-col w-full bg-header lg:hidden">
         <div
           style={{ height: navbarHeight }}
-          class="lg:hidden flex flex-row justify-between items-center w-full pl-2 pr-6 pt-4 gap-2"
+          class="lg:hidden flex flex-row justify-between items-center w-full pl-2 pr-2 lg:pr-6 pt-4 gap-2"
         >
           <HeaderButton variant="menu" />
 
