@@ -87,7 +87,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
           </ul>
         </figcaption>
       </figure>
-      <div class="card-body p-1 flex flex-col justify-between">
+      <div class="card-body p-1 flex flex-col justify-between lg:min-h-[210px]">
         <h2 class="text-xs sm:text-base font-firaSans uppercase text-center text-text-color-secord overflow-hidden">
           {name}
         </h2>
