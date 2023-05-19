@@ -21,6 +21,7 @@ function SearchButton() {
       aria-label="search icon button"
       onClick={() => {
         displaySearchbar.value = !displaySearchbar.peek();
+        console.log(displaySearchbar.peek());
       }}
     >
       <Icon id="MagnifyingGlass" width={20} height={20} strokeWidth={0.1} />
@@ -33,13 +34,13 @@ function MenuButton() {
 
   return (
     <Button
-      class="btn-square btn-ghost"
+      class="btn-square btn-ghost text-white"
       aria-label="open menu"
       onClick={() => {
         displayMenu.value = true;
       }}
     >
-      <Icon id="Bars3" width={20} height={20} strokeWidth={0.01} />
+      <Icon id="Bars3" width={40} height={40} strokeWidth={0.5} />
     </Button>
   );
 }
@@ -71,7 +72,7 @@ function CartButton() {
 
   return (
     <Button
-      class="btn-square btn-ghost relative"
+      class="btn-square btn-ghost relative text-white"
       aria-label="open cart"
       data-deco={displayCart.value && "open-cart"}
       disabled={loading.value}
@@ -83,7 +84,7 @@ function CartButton() {
             {totalItems > 9 ? "9+" : totalItems}
           </span>
         )}
-        <Icon id="ShoppingCart" width={20} height={20} strokeWidth={2} />
+        <Icon id="ShoppingCarr" width={30} height={30} strokeWidth={4} />
       </div>
     </Button>
   );

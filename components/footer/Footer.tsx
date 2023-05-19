@@ -1,9 +1,10 @@
 import Icon, {
   AvailableIcons,
 } from "deco-sites/fashion/components/ui/Icon.tsx";
-
-import Newsletter from "./Newsletter.tsx";
+import { asset, Head } from "$fresh/runtime.ts";
 import type { ComponentChildren } from "preact";
+import Newsletter from "./Newsletter.tsx";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export type IconItem = { icon: AvailableIcons };
 export type StringItem = {
@@ -13,28 +14,35 @@ export type StringItem = {
 
 export type Item = StringItem | IconItem;
 
-export type Section = {
+export type Icons = {
+  prevIcon?: AvailableIcons;
   label: string;
-  children: Item[];
+  href: string;
 };
 
-const isIcon = (item: Item): item is IconItem =>
-  // deno-lint-ignore no-explicit-any
-  typeof (item as any)?.icon === "string";
+export type Section = {
+  label: string;
+  children?: Icons[];
+};
 
-function SectionItem({ item }: { item: Item }) {
+function SectionItem({ item }: { item: Icons }) {
   return (
-    <span class="text-primary-content">
-      {isIcon(item)
+    <span class="uppercase font-firaSans text-sm font-light text-text-color-white hover:text-default">
+      {item.prevIcon
         ? (
-          <div class="border-base-100 border border-solid py-1.5 px-2.5">
-            <Icon
-              id={item.icon}
-              width={25}
-              height={20}
-              strokeWidth={0.01}
-            />
-          </div>
+          <a class="flex flex-row items-center gap-2" href={item.href}>
+            <div class="">
+              <Icon
+                id={item.prevIcon}
+                width={25}
+                height={20}
+                strokeWidth={1}
+              />
+            </div>
+            <span>
+              {item.label}
+            </span>
+          </a>
         )
         : (
           <a href={item.href}>
@@ -51,38 +59,121 @@ function FooterContainer(
     children: ComponentChildren;
   },
 ) {
-  return <div class={`py-6 px-4 sm:py-12 sm:px-0 ${_class}`}>{children}</div>;
+  return (
+    <div class={`py-6 sm:py-7 sm:px-0  ${_class}`}>
+      {children}
+    </div>
+  );
+}
+
+export type ItemImg = {
+  img: LiveImage;
+  alt: string;
+  title: string;
+  width: number;
+  height: number;
+};
+
+export interface imgProps {
+  tittle?: string;
+  imgs: ItemImg;
+}
+
+function ItemImg({ imgs }: { imgs: ItemImg }) {
+  const { img, alt, title, width, height } = imgs;
+  return (
+    <>
+      <image
+        alt={img}
+        src={alt}
+        srcSet={img}
+        title={title}
+        width={width}
+        height={height}
+      />
+    </>
+  );
+}
+export interface Rede {
+  /** @description Imagem */
+  img: LiveImage;
+  /** @description alt */
+  alt: string;
+  /** @description titulo */
+  titleI: string;
+  /** @description link */
+  href: string;
+}
+export interface NewsletterProps {
+  /** @description Titulo */
+  titleN: string;
+  /** @description Conteudo */
+  content: string;
+  /** @description rede social*/
+  firstIcon?: Rede;
+  /** @description rede social*/
+  secordIcon?: Rede;
+  /** @description rede social*/
+  thirdIcon?: Rede;
+}
+
+export interface LogoFooter {
+  /** @description logo */
+  logo: LiveImage;
+  /** @description alt */
+  alt: string;
+  /** @description title */
+  title: string;
+  /** @description link */
+  href?: string;
+  /** @description text */
+  text: string;
 }
 
 export interface Props {
   sections?: Section[];
+
+  newsletter: NewsletterProps;
+
+  logo?: LogoFooter;
+
+  InfosFooter?: imgProps[];
 }
 
-function Footer({ sections = [] }: Props) {
+function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
   return (
-    <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
+    <footer class="w-full flex flex-col">
       <div>
-        <div class="container w-full flex flex-col divide-y divide-primary-content">
-          <FooterContainer>
-            <Newsletter />
+        <div class="w-full flex flex-col border-b-1 border-gray-100">
+          <FooterContainer class="bg-newsletter px-4">
+            <Newsletter newsletter={newsletter} />
           </FooterContainer>
 
-          <FooterContainer>
+          <FooterContainer class="bg-footer  px-8 border-b-2 border-default border-solid">
             {/* Desktop view */}
-            <ul class="hidden sm:flex flex-row gap-20">
+            <ul class="hidden container sm:flex flex-row gap-6 justify-around">
+              <li class="w-full flex justify-center items-center">
+                <a href={logo?.href}>
+                  <image
+                    src={logo?.logo}
+                    alt={logo?.alt}
+                    title={logo?.title}
+                    width={201}
+                    height={168}
+                  />
+                </a>
+              </li>
               {sections.map((section) => (
-                <li>
-                  <div>
-                    <span class="font-medium text-xl text-primary-content">
+                <li class=" border-white border-r last:border-r-0 last:justify-start pr-2 last:pr-0 flex justify-center w-full">
+                  <div class="">
+                    <span class="text-lg uppercase font-firaSans font-semibold text-text-color-white">
                       {section.label}
                     </span>
 
                     <ul
-                      class={`flex ${
-                        isIcon(section.children[0]) ? "flex-row" : "flex-col"
-                      } gap-2 pt-2 flex-wrap`}
+                      class={`flex flex-col gap-1 pt-4`}
                     >
-                      {section.children.map((item) => (
+                      {section.children?.map((item) => (
                         <li>
                           <SectionItem item={item} />
                         </li>
@@ -94,27 +185,39 @@ function Footer({ sections = [] }: Props) {
             </ul>
 
             {/* Mobile view */}
-            <ul class="flex flex-col sm:hidden sm:flex-row gap-4">
+            <div class="flex justify-center items-center mb-3 w-full sm:hidden">
+              <a href={logo?.href}>
+                <image
+                  src={logo?.logo}
+                  alt={logo?.alt}
+                  title={logo?.title}
+                  width={156}
+                  height={132}
+                />
+              </a>
+              {
+                /* <span>
+                {logo?.text}
+              </span> */
+              }
+            </div>
+            <ul class="flex flex-col sm:hidden sm:flex-row gap-6">
               {sections.map((section) => (
                 <li>
-                  <span class="text-primary-content">
-                    <details>
-                      <summary>
-                        {section.label}
-                      </summary>
+                  <span class="text-text-color-white ">
+                    <span class="font-firaSans font-bold text-lg uppercase">
+                      {section.label}
+                    </span>
 
-                      <ul
-                        class={`flex ${
-                          isIcon(section.children[0]) ? "flex-row" : "flex-col"
-                        } gap-2 px-2 pt-2`}
-                      >
-                        {section.children.map((item) => (
-                          <li>
-                            <SectionItem item={item} />
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
+                    <ul
+                      class={`flex flex-col gap-5 pt-4`}
+                    >
+                      {section.children?.map((item) => (
+                        <li>
+                          <SectionItem item={item} />
+                        </li>
+                      ))}
+                    </ul>
                   </span>
                 </li>
               ))}
@@ -124,52 +227,49 @@ function Footer({ sections = [] }: Props) {
       </div>
 
       <div>
-        <div class="container w-full">
-          <FooterContainer class="flex justify-between w-full">
-            <span class="flex items-center gap-1 text-primary-content">
-              Powered by{" "}
-              <a
-                href="https://www.deco.cx"
-                aria-label="powered by https://www.deco.cx"
-              >
-                <Icon id="Deco" height={20} width={60} strokeWidth={0.01} />
-              </a>
-            </span>
-
-            <ul class="flex items-center justify-center gap-2">
-              <li>
-                <a
-                  href="https://www.instagram.com/deco.cx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram logo"
-                >
-                  <Icon
-                    class="text-primary-content"
-                    width={32}
-                    height={32}
-                    id="Instagram"
-                    strokeWidth={1}
+        <div class="sm:px-10 w-full bg-white">
+          <FooterContainer class="flex justify-center items-center bg-white">
+            <div class="flex flex-col justify-center items-center">
+              <div class="sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:grid-flow-row sm:gap-x-6">
+                {InfosFooter?.map((infos) => (
+                  <div class="sm:last:col-start-2">
+                    <h2 class="text-center text-lg tracking-wider font-firaSans text-text-color-secord font-light mt-8 mb-3 sm:mt-0 uppercase">
+                      {infos?.tittle}
+                    </h2>
+                    <div>
+                      <div>
+                        <ItemImg imgs={infos.imgs} />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div class="flex flex-col justify-center items-center w-full sm:flex-row sm:justify-around pt-4 sm:pb-2">
+                <image
+                  src={asset("/logo-direitos.svg")}
+                  width={90}
+                  height={20}
+                  loading="lazy"
+                />
+                <span class="font-firaSans font-text-base text-sm mt-2 mb-6 sm:m-0">
+                  Todos los derechos reservados Miscelandia 2022
+                </span>
+                <div class="flex flex-row justify-center items-center gap-5">
+                  <image
+                    src={asset("/vtex.png")}
+                    width={66}
+                    height={25}
+                    loading="lazy"
                   />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://www.deco.cx/discord"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Discord logo"
-                >
-                  <Icon
-                    class="text-primary-content"
-                    width={32}
-                    height={32}
-                    id="Discord"
-                    strokeWidth={5}
+                  <image
+                    src={asset("/logo-jump.png")}
+                    width={35}
+                    height={27}
+                    loading="lazy"
                   />
-                </a>
-              </li>
-            </ul>
+                </div>
+              </div>
+            </div>
           </FooterContainer>
         </div>
       </div>

@@ -19,14 +19,16 @@ function SearchControls(
   const open = useSignal(false);
 
   return (
-    <div class="flex flex-col justify-between mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200">
+    <div class="flex flex-col justify-between mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px]">
       <div class="flex flex-row items-center sm:p-0 mb-2">
         <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
       </div>
 
-      <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 sm:border-none">
+      <div class="flex flex-row items-center sm:gap-4 justify-end">
         <Button
-          class={displayFilter ? "btn-ghost" : "btn-ghost sm:hidden"}
+          class={`${
+            displayFilter ? "btn-ghost" : "btn-ghost sm:hidden"
+          } bg-default rounded-none rounded-r-full absolute left-0 top-[194px] text-white text-xs`}
           onClick={() => {
             open.value = true;
           }}
@@ -34,7 +36,6 @@ function SearchControls(
           Filtrar
           <Icon id="FilterList" width={16} height={16} />
         </Button>
-        {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
       </div>
 
       <Modal

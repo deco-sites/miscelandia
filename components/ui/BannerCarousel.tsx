@@ -16,16 +16,8 @@ export interface Banner {
   mobile: LiveImage;
   /** @description Image's alt text */
   alt: string;
-  action?: {
-    /** @description when user clicks on the image, go to this link */
-    href: string;
-    /** @description Image text title */
-    title: string;
-    /** @description Image text subtitle */
-    subTitle: string;
-    /** @description Button label */
-    label: string;
-  };
+  /** @description Image's alt text */
+  href: string;
 }
 
 export interface Props {
@@ -46,26 +38,26 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
     alt,
     mobile,
     desktop,
-    action,
+    href,
   } = image;
 
   return (
-    <div class="relative h-[600px] min-w-[100vw] overflow-y-hidden">
-      <a href={action?.href ?? "#"} aria-label={action?.label}>
+    <div class="relative max-h-[220px] sm:max-h-[550px] min-w-[100vw] overflow-y-hidden">
+      <a href={href ?? "#"}>
         <Picture class="w-full" preload={lcp}>
           <Source
             media="(max-width: 767px)"
             fetchPriority={lcp ? "high" : "auto"}
             src={mobile}
             width={360}
-            height={600}
+            height={210}
           />
           <Source
             media="(min-width: 768px)"
             fetchPriority={lcp ? "high" : "auto"}
             src={desktop}
-            width={1440}
-            height={600}
+            width={1550}
+            height={420}
           />
           <img
             class="object-cover w-full sm:h-full"
@@ -74,17 +66,6 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             alt={alt}
           />
         </Picture>
-        {action && (
-          <div class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 p-4 rounded glass">
-            <span class="text-6xl font-medium text-base-100">
-              {action.title}
-            </span>
-            <span class="font-medium text-xl text-base-100">
-              {action.subTitle}
-            </span>
-            <Button class="glass">{action.label}</Button>
-          </div>
-        )}
       </a>
     </div>
   );
@@ -109,7 +90,8 @@ function ProgressiveDots({ images, interval = 0 }: Props) {
         {images?.map((_) => (
           <div class="py-5">
             <div
-              class="w-16 sm:w-20 h-0.5 rounded group-disabled:animate-progress bg-gradient-to-r from-base-100 from-[length:var(--dot-progress)] to-[rgba(255,255,255,0.4)] to-[length:var(--dot-progress)]"
+              class="bg-default group-disabled:${ 'bg-white'
+            } w-3 sm:w-3 h-3 rounded-full group-disabled:bg-gray"
               style={{ animationDuration: `${interval}s` }}
             />
           </div>
@@ -124,13 +106,13 @@ function Controls() {
     <>
       <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
         <Button
-          class="btn-circle glass"
+          class="bg-transparent border-transparent hover:bg-transparent hover:border-transparent p-0"
           data-slide="prev"
           aria-label="Previous item"
         >
           <Icon
-            class="text-base-100"
-            size={20}
+            class="text-black "
+            size={30}
             id="ChevronLeft"
             strokeWidth={3}
           />
@@ -138,13 +120,13 @@ function Controls() {
       </div>
       <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
         <Button
-          class="btn-circle glass"
+          class="bg-transparent border-transparent hover:bg-transparent hover:border-transparent p-0"
           data-slide="next"
           aria-label="Next item"
         >
           <Icon
-            class="text-base-100"
-            size={20}
+            class="text-black"
+            size={30}
             id="ChevronRight"
             strokeWidth={3}
           />
@@ -160,7 +142,7 @@ function BannerCarousel({ images, preload, interval }: Props) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px]"
+      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[50px_1fr_50px] grid-rows-[48px_1fr_0px]"
     >
       <Slider class="col-span-full row-span-full scrollbar-none gap-6">
         {images?.map((image, index) => (

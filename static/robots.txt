@@ -1,2 +1,18 @@
+# Disallow all crawlers access to certain pages. 
 User-agent: *
-Allow: *
+
+Disallow: /checkout
+
+Sitemap: /sitemap.xml
+
+Disallow: /img/
+Disallow: /Busca/
+Disallow: /Quick-View/
+Disallow: /Control/
+
+Disallow: /Site/Servicos.aspx 
+Disallow: /Site/TagsMaisPopulares.aspx 
+Disallow: /Site/QuickView.aspx 
+Disallow: /Site/Produto_Listas.aspx 
+Disallow: /Site/ProdutoFrete.aspx 
+Disallow: /Site/TagDetalhe.aspx

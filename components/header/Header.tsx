@@ -6,10 +6,11 @@ import type { Product, Suggestion } from "deco-sites/std/commerce/types.ts";
 
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
-import { headerHeight } from "./constants.ts";
+import { headerHeight, headerHeightDesk } from "./constants.ts";
 
-export interface NavItem {
+export interface INavItem {
   label: string;
+  colorBorder: string;
   href: string;
   children?: Array<{
     label: string;
@@ -19,21 +20,28 @@ export interface NavItem {
       href: string;
     }>;
   }>;
-  image?: {
-    src?: Image;
-    alt?: string;
-  };
+}
+
+export type Link = {
+  label: string;
+  href: string;
+};
+
+export interface Alert {
+  whatsapp: Link;
+  email: Link;
+  infos: Link[];
 }
 
 export interface Props {
-  alerts: string[];
+  alerts: Alert;
   /** @title Search Bar */
   searchbar?: SearchbarProps;
   /**
    * @title Navigation items
    * @description Navigation items used both on mobile and desktop menus
    */
-  navItems?: NavItem[];
+  navItems?: INavItem[];
 
   /**
    * @title Product suggestions
@@ -59,9 +67,11 @@ function Header(
   const searchbar = { ..._searchbar, products, suggestions };
   return (
     <>
-      <header style={{ height: headerHeight }}>
+      <header class={`min-h-[133px] lg:min-h-[177px]`}>
         <div class="bg-base-100 fixed w-full z-50">
-          <Alert alerts={alerts} />
+          <div class="hidden lg:flex">
+            <Alert props={alerts} />
+          </div>
           <Navbar items={navItems} searchbar={searchbar} />
         </div>
 

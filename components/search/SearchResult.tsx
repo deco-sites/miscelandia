@@ -7,6 +7,26 @@ import { useOffer } from "deco-sites/fashion/sdk/useOffer.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
+import Sort from "deco-sites/fashion/components/search/Sort.tsx";
+
+export interface Banner {
+  /** @description RegExp to enable this banner on the current URL. Use /feminino/* to display this banner on feminino category  */
+  matcher: string;
+  /** @description text to be rendered on top of the image */
+  title?: string;
+  /** @description text to be rendered on top of the image */
+  subtitle?: string;
+  image: {
+    /** @description Image for big screens */
+    desktop: LiveImage;
+    /** @description Image for small screens */
+    mobile: LiveImage;
+    /** @description image alt text */
+    alt?: string;
+  };
+}
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -17,7 +37,74 @@ export interface Props {
   /**
    * @description Number of products per line on grid
    */
-  columns: Columns;
+  columns?: Columns;
+
+  banners?: Banner[];
+}
+
+function BannerUI({ banner }: { banner: Banner }) {
+  const { title, subtitle, image } = banner;
+
+  return (
+    <div class="grid grid-cols-1 grid-rows-1">
+      <Picture preload class="col-start-1 col-span-1 row-start-1 row-span-1">
+        <Source
+          src={image.mobile}
+          width={360}
+          height={206}
+          media="(max-width: 767px)"
+        />
+        <Source
+          src={image.desktop}
+          width={931}
+          height={171}
+          media="(min-width: 767px)"
+        />
+        <img class="w-full" src={image.desktop} alt={image.alt ?? title} />
+      </Picture>
+    </div>
+  );
+}
+
+function Banner({ page, banners = [] }: Props) {
+  if (!page || page.breadcrumb.itemListElement.length === 0) {
+    return null;
+  }
+
+  const { item: canonical } = page
+    .breadcrumb
+    .itemListElement
+    .reduce((curr, acc) => curr.position > acc.position ? curr : acc);
+
+  const matching = banners.find(({ matcher }) =>
+    new RegExp(matcher).test(canonical)
+  );
+
+  if (!matching) {
+    return null;
+  }
+
+  return <BannerUI banner={matching} />;
+}
+
+function H1Page({ page }: { page: ProductListingPage }) {
+  const { breadcrumb } = page;
+  const length = breadcrumb.itemListElement.length;
+  if (!length) {
+    return null;
+  }
+
+  return (
+    <>
+      {breadcrumb && (
+        <h1>
+          {breadcrumb
+            ?.itemListElement[length - 1]
+            .name}
+        </h1>
+      )}
+    </>
+  );
 }
 
 function NotFound() {
@@ -31,12 +118,13 @@ function NotFound() {
 function Result({
   page,
   variant,
+  banners = [],
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
 
   return (
     <>
-      <div class="container px-4 sm:py-10">
+      <div class="w-full px-2 sm:px-8 sm:py-10">
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
@@ -45,13 +133,33 @@ function Result({
         />
 
         <div class="flex flex-row">
-          {variant === "aside" && filters.length > 0 && (
-            <aside class="hidden sm:block w-min min-w-[250px]">
-              <Filters filters={filters} />
-            </aside>
-          )}
-          <div class="flex-grow">
-            <ProductGallery products={products} />
+          <div class="flex flex-col sm:pr-3">
+            <div class="text-2xl p-3 hidden sm:flex bg-slate-400 rounded-md text-white">
+              <H1Page page={page}></H1Page>
+            </div>
+            {variant === "aside" && filters.length > 0 && (
+              <aside class="hidden sm:block w-min xl:min-w-[260px] 2xl:min-w-[390px]  mt-5">
+                <p class="text-sm text-text-color-secord mb-2">FILTRADO POR:</p>
+                <Filters filters={filters} />
+              </aside>
+            )}
+          </div>
+
+          <div class="flex-grow flex flex-col">
+            <div class="w-full justify-end flex py-3 items-center sm:order-2">
+              {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+            </div>
+            <div class=" w-full sm:order-1 mb-3 sm:m-0">
+              <Banner page={page} banners={banners} />
+            </div>
+            <div class="text-2xl p-3 mx-3 sm:hidden bg-slate-400 rounded-md text-white">
+              <h1>
+                <H1Page page={page}></H1Page>
+              </h1>
+            </div>
+            <div class="order-3">
+              <ProductGallery products={products} />
+            </div>
           </div>
         </div>
 

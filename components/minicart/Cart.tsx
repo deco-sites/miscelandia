@@ -7,6 +7,8 @@ import { useUI } from "deco-sites/fashion/sdk/useUI.ts";
 import CartItem from "./CartItem.tsx";
 import Coupon from "./Coupon.tsx";
 
+import { asset, Head } from "$fresh/runtime.ts";
+
 declare global {
   interface Window {
     DECO_SITES_STD: {
@@ -15,8 +17,7 @@ declare global {
   }
 }
 
-const CHECKOUT_URL =
-  "https://bravtexfashionstore.vtexcommercestable.com.br/checkout";
+const CHECKOUT_URL = "https://miscelandia.vtexcommercestable.com.br/checkout";
 
 function Cart() {
   const { displayCart } = useUI();
@@ -55,7 +56,8 @@ function Cart() {
       {/* Cart Items */}
       <ul
         role="list"
-        class="mt-6 px-2 flex-grow overflow-y-auto flex flex-col gap-6"
+        class="pt-2 px-2 flex-grow overflow-y-auto flex flex-col gap-3"
+        style={`background-image: url(${asset("/Fondo-Miscelandia.png")})`}
       >
         {cart.value.items.map((_, index) => (
           <li>
@@ -67,7 +69,7 @@ function Cart() {
       {/* Cart Footer */}
       <footer>
         {/* Subtotal */}
-        <div class="border-t border-base-200 py-4 flex flex-col gap-4">
+        <div class="border-t border-base-200 py-2 flex flex-col gap-4">
           {discounts?.value && (
             <div class="flex justify-between items-center px-4">
               <span class="text-sm">Descontos</span>
@@ -100,7 +102,7 @@ function Cart() {
           >
             <Button
               data-deco="buy-button"
-              class="w-full"
+              class="w-full bg-default border-none hover "
               disabled={loading.value || cart.value.items.length === 0}
               onClick={() => {
                 window.DECO_SITES_STD.sendAnalyticsEvent({

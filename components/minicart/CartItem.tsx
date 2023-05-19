@@ -35,27 +35,40 @@ function CartItem({ index }: Props) {
   const isGift = sellingPrice < 0.01;
 
   return (
-    <div class="flex flex-row justify-between items-start gap-4">
+    <div class="flex flex-row justify-between gap-2 items-center border border-text-color-secord drop-shadow-md
+     p-1 min-h-[140px]">
       <Image
         src={imageUrl}
         alt={skuName}
-        width={108}
-        height={150}
+        width={80}
+        height={80}
         class="object-cover object-center"
       />
       <div class="flex-grow">
-        <span>{name}</span>
+        <span class="text-text-color-secord font-firaSans">{name}</span>
         <div class="flex items-center gap-2">
-          <span class="line-through text-base-300 text-sm">
-            {formatPrice(listPrice / 100, currencyCode!, locale)}
-          </span>
-          <span class="text-sm text-secondary">
-            {isGift
-              ? "Grátis"
-              : formatPrice(sellingPrice / 100, currencyCode!, locale)}
-          </span>
+          {listPrice != sellingPrice
+            ? (
+              <div class="flex items-center gap-2">
+                <span class="line-through text-base-300 text-sm ">
+                  {formatPrice(listPrice / 100, currencyCode!, locale)}
+                </span>
+                <span class="text-sm text-secondary text-text-color-primary font-semibold">
+                  {isGift
+                    ? "Grátis"
+                    : formatPrice(sellingPrice / 100, currencyCode!, locale)}
+                </span>
+              </div>
+            )
+            : (
+              <span class="text-sm text-secondary text-text-color-primary font-semibold">
+                {isGift
+                  ? "Grátis"
+                  : formatPrice(sellingPrice / 100, currencyCode!, locale)}
+              </span>
+            )}
         </div>
-        <div class="mt-6 max-w-min">
+        <div class="mt-3 max-w-min">
           <QuantitySelector
             disabled={loading.value || isGift}
             quantity={quantity}
@@ -97,7 +110,7 @@ function CartItem({ index }: Props) {
         }}
         disabled={loading.value || isGift}
         loading={loading.value}
-        class="btn btn-ghost"
+        class="rounded-full p-1 w-[40px] h-[40px] min-h-[40px] min-w-[40px] bg-white border text-text-color-secord"
       >
         <Icon id="Trash" width={20} height={20} />
       </Button>

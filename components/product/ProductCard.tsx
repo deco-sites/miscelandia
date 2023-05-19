@@ -7,6 +7,8 @@ import { useVariantPossibilities } from "deco-sites/fashion/sdk/useVariantPossib
 import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/productToAnalyticsItem.ts";
 import { sendEventOnClick } from "deco-sites/fashion/sdk/analytics.ts";
 import type { Product } from "deco-sites/std/commerce/types.ts";
+import AddToCartButton from "./AddToCartButton.tsx";
+import Off from "./Off.tsx";
 
 interface Props {
   product: Product;
@@ -25,10 +27,11 @@ function ProductCard({ product, preload, itemListName }: Props) {
     image: images,
     offers,
     isVariantOf,
+    brand,
   } = product;
   const productGroupID = isVariantOf?.productGroupID;
   const [front, back] = images ?? [];
-  const { listPrice, price } = useOffer(offers);
+  const { listPrice, price, seller } = useOffer(offers);
   const possibilities = useVariantPossibilities(product);
   const options = Object.entries(
     possibilities["TAMANHO"] ?? possibilities["Tamanho"] ?? {},
@@ -49,32 +52,25 @@ function ProductCard({ product, preload, itemListName }: Props) {
 
   return (
     <div
-      class="card card-compact card-bordered border-transparent hover:border-base-200 group"
+      class="border-[1px] border-slate-300 h-full flex flex-col justify-between  bg-white hover:shadow-2xl p-2"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
     >
       <figure class="relative">
-        <div class="absolute top-0 right-0">
+        <div class="absolute top-0 right-0 text-default w-full flex justify-between">
           <WishlistIcon productGroupID={productGroupID} productID={productID} />
+          <Off product={product} />
         </div>
         <a href={url} aria-label="view product">
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={200}
-            height={279}
-            class="rounded w-full group-hover:hidden"
+            width={251}
+            height={251}
+            class="rounded w-full"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
-            sizes="(max-width: 640px) 50vw, 20vw"
-          />
-          <Image
-            src={back?.url ?? front.url!}
-            alt={back?.alternateName ?? front.alternateName}
-            width={200}
-            height={279}
-            class="rounded w-full hidden group-hover:block"
             sizes="(max-width: 640px) 50vw, 20vw"
           />
         </a>
@@ -91,16 +87,36 @@ function ProductCard({ product, preload, itemListName }: Props) {
           </ul>
         </figcaption>
       </figure>
-      <div class="card-body">
-        <h2 class="card-title whitespace-nowrap overflow-hidden">{name}</h2>
-        <div class="flex items-end gap-2">
-          <span class="line-through text-base-300 text-xs">
-            {formatPrice(listPrice, offers!.priceCurrency!)}
+      <div class="card-body p-1 flex flex-col justify-between">
+        <h2 class="text-xs sm:text-base font-firaSans uppercase text-center text-text-color-secord overflow-hidden">
+          {name}
+        </h2>
+        <div class="flex flex-col items-center gap-2">
+          {
+            /* <span class="text-base-300 text-[10px] text-xs text-center">
+            {offers!.offers[0]?.priceSpecification[8]?.description}
+          </span> */
+          }
+          <span class="text-sm font-semibold">
+            Marca: {brand}
           </span>
-          <span class="text-secondary">
+          {listPrice != price && (
+            <span class="font-firaSans font-light text-text-color-secord text-sm sm:text-base line-through">
+              {formatPrice(listPrice, offers!.priceCurrency!)}
+            </span>
+          )}
+          <span class="font-firaSans font-bold text-default sm:text-lg">
             {formatPrice(price, offers!.priceCurrency!)}
           </span>
         </div>
+        <AddToCartButton
+          skuId={productID}
+          sellerId={seller ? seller : "1"}
+          price={price ?? 0}
+          discount={price && listPrice ? listPrice - price : 0}
+          name={product.name ?? ""}
+          productGroupId={product.isVariantOf?.productGroupID ?? ""}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,8 @@
 import ProductCard from "deco-sites/fashion/components/product/ProductCard.tsx";
-import { Slider } from "deco-sites/fashion/components/ui/Slider.tsx";
+import {
+  Slider,
+  SliderDots,
+} from "deco-sites/fashion/components/ui/Slider.tsx";
 import SliderControllerJS from "deco-sites/fashion/islands/SliderJS.tsx";
 import Button from "deco-sites/fashion/components/ui/Button.tsx";
 import Icon from "deco-sites/fashion/components/ui/Icon.tsx";
@@ -29,18 +32,20 @@ function ProductShelf({
   return (
     <div
       id={id}
-      class="container grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr] py-10 px-0 sm:px-5"
+      class="container sm:max-w-[1700px] grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr] pb-10 pt-6 px-0 sm:px-5"
     >
-      <h2 class="text-center row-start-1 col-span-full">
-        <span class="font-medium text-2xl">{title}</span>
+      <h2 class="text-center lg:text-left row-start-1 col-span-full text-text-color-secord ">
+        <span class="font-firaSans font-semibold text-lg uppercase tracking-widest lg:ml-4">
+          {title}
+        </span>
       </h2>
 
       <Slider
-        class="gap-6 col-span-full row-start-2 row-end-5"
-        snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
+        class="gap-2 sm:gap-6 col-span-full row-start-2 row-end-5 pb-3 px-3 overflow-auto sm:overflow-x-hidden"
+        snap="snap-center sm:snap-start block sm:first:ml-6 sm:first:ml-0 sm:last:mr-6 sm:last:mr-0"
       >
         {products?.map((product) => (
-          <div class="min-w-[270px] max-w-[270px] sm:min-w-[292px] sm:max-w-[292px]">
+          <div class="min-w-[170px] max-w-[170px] sm:min-w-[380px] sm:max-w-[380px]">
             <ProductCard product={product} itemListName={title} />
           </div>
         ))}
