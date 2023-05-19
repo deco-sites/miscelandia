@@ -357,16 +357,16 @@ function Details({
                 </Icon>
               </a>
 
-              <a href={infos?.comparte.google}>
-                <Icon id="Facebook" width={25} height={25} strokeWidth={1}>
+              <a class="text-text-color-secord" href={infos?.comparte.google}>
+                <Icon id="Twitter" width={25} height={25} strokeWidth={1}>
                 </Icon>
               </a>
               <a href={infos?.comparte.twitter}>
-                <Icon id="Tiktok" width={25} height={25} strokeWidth={1}>
+                <Icon id="Pinterest" width={25} height={25} strokeWidth={1}>
                 </Icon>
               </a>
               <a href={infos?.comparte.pinterwst}>
-                <Icon id="Instagram" width={25} height={25} strokeWidth={1}>
+                <Icon id="GooglePlus" width={25} height={25} strokeWidth={1}>
                 </Icon>
               </a>
             </div>
