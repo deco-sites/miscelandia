@@ -3579,6 +3579,22 @@
             {
               "type": "string",
               "const": "UserHappy"
+            },
+            {
+              "type": "string",
+              "const": "GooglePlus"
+            },
+            {
+              "type": "string",
+              "const": "Pinterest"
+            },
+            {
+              "type": "string",
+              "const": "Twitter"
+            },
+            {
+              "type": "string",
+              "const": "Teste"
             }
           ],
           "type": "string",
@@ -3783,6 +3799,22 @@
             {
               "type": "string",
               "const": "UserHappy"
+            },
+            {
+              "type": "string",
+              "const": "GooglePlus"
+            },
+            {
+              "type": "string",
+              "const": "Pinterest"
+            },
+            {
+              "type": "string",
+              "const": "Twitter"
+            },
+            {
+              "type": "string",
+              "const": "Teste"
             }
           ],
           "type": "string",
@@ -4367,15 +4399,33 @@
       "required": [],
       "title": "deco-sites/miscelandia/components/ui/LinkTree.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Link": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "title": "Link"
+    },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Infos": {
       "type": "object",
       "properties": {
         "whatsapp": {
-          "type": "string",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Link",
           "title": "Whatsapp"
         },
         "tel": {
-          "type": "string",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Link",
           "title": "Tel"
         },
         "service": {
@@ -4385,9 +4435,9 @@
         "comparte": {
           "type": "object",
           "properties": {
-            "facebooke": {
+            "facebook": {
               "type": "string",
-              "title": "Facebooke"
+              "title": "Facebook"
             },
             "google": {
               "type": "string",
@@ -4403,7 +4453,7 @@
             }
           },
           "required": [
-            "facebooke",
+            "facebook",
             "google",
             "twitter",
             "pinterwst"
@@ -4426,28 +4476,10 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage|null",
           "title": "Page"
         },
-        "variant": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "front-back"
-            },
-            {
-              "type": "string",
-              "const": "slider"
-            },
-            {
-              "type": "string",
-              "const": "auto"
-            }
-          ],
-          "type": "string",
-          "title": "Variant",
-          "description": "Ask for the developer to remove this option since this is here to help development only and should not be used in production"
-        },
         "infos": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL3Byb2R1Y3QvUHJvZHVjdERldGFpbHMudHN4@Infos",
-          "title": "Infos"
+          "title": "Infos",
+          "description": "Ask for the developer to remove this option since this is here to help development only and should not be used in production"
         }
       },
       "required": [

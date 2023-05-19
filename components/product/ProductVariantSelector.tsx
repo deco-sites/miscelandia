@@ -9,6 +9,10 @@ interface Props {
 function VariantSelector({ product, product: { url } }: Props) {
   const possibilities = useVariantPossibilities(product);
 
+  if (!possibilities["TALLA"]) {
+    return <></>;
+  }
+
   return (
     <ul class="flex flex-col gap-4">
       <li class="flex flex-col gap-2">
