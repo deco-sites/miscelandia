@@ -216,13 +216,6 @@ function Details({
   const id = `product-image-gallery:${useId()}`;
   const { product: { image: images = [] } } = page;
 
-  /**
-   * Product slider variant
-   *
-   * Creates a three columned grid on destkop, one for the dots preview, one for the image slider and the other for product info
-   * On mobile, there's one single column with 3 rows. Note that the orders are different from desktop to mobile, that's why
-   * we rearrange each cell with col-start- directives
-   */
   return (
     <>
       <BreadcrumbList page={page} />
@@ -385,13 +378,6 @@ function Details({
     </>
   );
 }
-
-/**
- * Product front-back variant.
- *
- * Renders two images side by side both on mobile and on desktop. On mobile, the overflow is
- * reached causing a scrollbar to be rendered.
- */
 
 function ProductDetails(
   { page, infos }: Props,
