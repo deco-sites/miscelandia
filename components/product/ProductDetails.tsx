@@ -172,23 +172,25 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
 
   return (
     <>
-      {/* Add to Cart and Favorites button */}
-      {seller && (
-        <QuantityAddToCartButton
-          skuId={productID}
-          sellerId={seller}
-          price={price ?? 0}
-          discount={price && listPrice ? listPrice - price : 0}
-          name={product.name ?? ""}
-          productGroupId={product.isVariantOf?.productGroupID ?? ""}
-        />
-      )}
-      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        <WishlistButton
-          variant="full"
-          productGroupID={isVariantOf?.productGroupID}
-          productID={productID}
-        />
+      <div class="mt-4">
+        {/* Add to Cart and Favorites button */}
+        {seller && (
+          <QuantityAddToCartButton
+            skuId={productID}
+            sellerId={seller}
+            price={price ?? 0}
+            discount={price && listPrice ? listPrice - price : 0}
+            name={product.name ?? ""}
+            productGroupId={product.isVariantOf?.productGroupID ?? ""}
+          />
+        )}
+        <div class="mt-2 flex flex-col gap-2">
+          <WishlistButton
+            variant="full"
+            productGroupID={isVariantOf?.productGroupID}
+            productID={productID}
+          />
+        </div>
       </div>
     </>
   );

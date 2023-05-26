@@ -33,8 +33,6 @@ export const useAddToCart = (
   const { displayCart } = useUI();
   const { addItems, loading } = useCart();
 
-  console.log("useAddToCart", quantity);
-
   const onClick = useCallback(async (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
