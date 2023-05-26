@@ -22,14 +22,18 @@ export interface Options {
    */
   name: string;
   productGroupId: string;
+  quantity?: number;
 }
 
 export const useAddToCart = (
-  { skuId, sellerId, price, discount, name, productGroupId }: Options,
+  { skuId, sellerId, price, discount, name, productGroupId, quantity = 1 }:
+    Options,
 ) => {
   const isAddingToCart = useSignal(false);
   const { displayCart } = useUI();
   const { addItems, loading } = useCart();
+
+  console.log("useAddToCart", quantity);
 
   const onClick = useCallback(async (e: MouseEvent) => {
     e.preventDefault();
@@ -42,7 +46,7 @@ export const useAddToCart = (
     try {
       isAddingToCart.value = true;
       await addItems({
-        orderItems: [{ id: skuId, seller: sellerId, quantity: 1 }],
+        orderItems: [{ id: skuId, seller: sellerId, quantity }],
       });
 
       window.DECO_SITES_STD.sendAnalyticsEvent({
@@ -50,7 +54,7 @@ export const useAddToCart = (
         params: {
           items: [{
             item_id: productGroupId,
-            quantity: 1,
+            quantity: quantity,
             price,
             discount,
             item_name: name,

@@ -2,7 +2,7 @@ import {
   Options as UseAddToCartProps,
 } from "deco-sites/miscelandia/sdk/useAddToCart.ts";
 import { useSignal } from "@preact/signals";
-import QuantitySelector from "../ui/QuantitySelector.tsx";
+import QuantitySelector from "deco-sites/miscelandia/islands/QuantitySelector.tsx";
 import AddToCartButton from "deco-sites/miscelandia/islands/AddToCartButton.tsx";
 
 interface Props extends UseAddToCartProps {
@@ -22,8 +22,6 @@ function QuantityAddToCartButton(
     price,
     productGroupId,
     name,
-    text = "Adicionar à Sacola",
-    variant = "secondary",
   }: Props,
 ) {
   const quantity = useSignal(1);
@@ -44,7 +42,7 @@ function QuantityAddToCartButton(
         discount={discount}
         name={name}
         productGroupId={productGroupId}
-        quantity={quantity.value}
+        quantity={quantity.peek()}
       />
     </div>
   );
