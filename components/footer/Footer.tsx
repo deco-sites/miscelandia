@@ -90,7 +90,7 @@ function ItemImg({ imgs }: { imgs: ItemImg }) {
         title={title}
         width={width}
         height={height}
-        preload={"lazy"}
+        loading="lazy"
       />
     </>
   );
