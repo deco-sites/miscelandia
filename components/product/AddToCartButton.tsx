@@ -3,6 +3,7 @@ import {
   Options as UseAddToCartProps,
   useAddToCart,
 } from "deco-sites/fashion/sdk/useAddToCart.ts";
+import Icon from "../ui/Icon.tsx";
 
 interface Props extends UseAddToCartProps {
   /**
@@ -29,9 +30,16 @@ function AddToCartButton(
     <Button
       data-deco="add-to-cart"
       {...props}
-      class="shrink w-full bg-default border-default text-xs"
+      class="bg-default border-default w-full h-8 flex items-center justify-center gap-4 btn shrink rounded-xl"
     >
-      Adicionar à Sacola
+      <Icon
+        class="w-min"
+        id="ShoppingCarr"
+        width={25}
+        height={25}
+      />
+
+      <span class="w-min">Comprar</span>
     </Button>
   );
 }
