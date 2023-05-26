@@ -31,7 +31,7 @@ function Navbar({ items, searchbar }: {
               <image
                 width={165}
                 height={25}
-                src={asset("/logo-miscelandia.jpg")}
+                src={asset("/logo-miscelandia.webp")}
                 title="logo mislecandia"
                 alt="miscelandia"
               >
@@ -74,7 +74,7 @@ function Navbar({ items, searchbar }: {
               <image
                 width={263}
                 height={40}
-                src={asset("/logo-miscelandia.jpg")}
+                src={asset("/logo-miscelandia.webp")}
                 title="logo mislecandia"
                 alt="miscelandia"
               >
