@@ -34,6 +34,7 @@ function ItemMarca({ marca }: { marca: Seller }) {
           title={title}
           width={130}
           height={54}
+          loading="lazy"
         />
       </a>
     </div>

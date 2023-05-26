@@ -90,6 +90,7 @@ function ItemImg({ imgs }: { imgs: ItemImg }) {
         title={title}
         width={width}
         height={height}
+        preload={"lazy"}
       />
     </>
   );
@@ -160,6 +161,7 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
                     title={logo?.title}
                     width={201}
                     height={168}
+                    loading="lazy"
                   />
                 </a>
               </li>
@@ -193,6 +195,7 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
                   title={logo?.title}
                   width={156}
                   height={132}
+                  loading="lazy"
                 />
               </a>
               {

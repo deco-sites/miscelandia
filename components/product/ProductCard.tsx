@@ -66,8 +66,8 @@ function ProductCard({ product, preload, itemListName }: Props) {
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={251}
-            height={251}
+            width={152}
+            height={152}
             class="rounded w-full"
             preload={preload}
             loading={preload ? "eager" : "lazy"}

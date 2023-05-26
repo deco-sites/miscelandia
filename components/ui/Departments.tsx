@@ -34,6 +34,8 @@ function Departments({ titleD, departaments }: Props) {
                 alt={departament?.imagem.alt}
                 title={departament?.imagem.title}
                 width={"40px"}
+                height={"40px"}
+                loading="lazy"
               >
               </image>
               <p class="text-text-color-secord text-center font-light text-sm uppercase">
