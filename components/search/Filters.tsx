@@ -44,7 +44,7 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col gap-4 py-4 px-4 sm:p-0">
+    <ul class="flex flex-col gap-4 py-4 px-4 sm:p-0 sm:min-w-[200px]">
       {filters
         .filter(isToggle)
         .map((filter) => (

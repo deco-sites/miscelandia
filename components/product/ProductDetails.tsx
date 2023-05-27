@@ -307,6 +307,8 @@ function Details({
                       height={87.5}
                       src={img.url!}
                       alt={img.alternateName}
+                      loading="lazy"
+                      decoding="async"
                     />
                   ))}
                 </SliderDots>
@@ -332,6 +334,8 @@ function Details({
               title="meios de pagmaneto"
               width={320}
               height={100}
+              loading="lazy"
+              decoding="async"
             >
             </img>
           </div>

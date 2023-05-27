@@ -35,8 +35,6 @@ function GlobalTags() {
 
       <style>
         @import
-        url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,200&display=swap');
-        @import
         url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
       </style>
     </Head>

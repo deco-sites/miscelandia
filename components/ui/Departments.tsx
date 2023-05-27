@@ -36,6 +36,7 @@ function Departments({ titleD, departaments }: Props) {
                 width={"40px"}
                 height={"40px"}
                 loading="lazy"
+                decoding="async"
               >
               </image>
               <p class="text-text-color-secord text-center font-light text-sm uppercase">
