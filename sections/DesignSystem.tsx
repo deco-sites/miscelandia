@@ -305,9 +305,9 @@ function Section({
   colors,
   miscellaneous,
   fonts = {
-    fontFamily: "Albert Sans",
+    fontFamily: "firaSans",
     styleInnerHtml:
-      "@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&display=swap');",
+      "@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,200&display=swap');",
   },
 }: Props) {
   const id = useId();

@@ -20,6 +20,7 @@ import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/product
 import ProductSelector from "./ProductVariantSelector.tsx";
 import ProductImageZoom from "deco-sites/fashion/islands/ProductImageZoom.tsx";
 import WishlistButton from "../wishlist/WishlistButton.tsx";
+import QuantityAddToCartButton from "./QuantityAddToCartButton.tsx";
 
 import Off from "./Off.tsx";
 
@@ -50,8 +51,8 @@ export interface Props {
   infos?: Infos;
 }
 
-const WIDTH = 360;
-const HEIGHT = 360;
+const WIDTH = 250;
+const HEIGHT = 250;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
 
 /**
@@ -171,10 +172,10 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
 
   return (
     <>
-      {/* Add to Cart and Favorites button */}
-      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
+      <div class="mt-4">
+        {/* Add to Cart and Favorites button */}
         {seller && (
-          <AddToCartButton
+          <QuantityAddToCartButton
             skuId={productID}
             sellerId={seller}
             price={price ?? 0}
@@ -183,11 +184,13 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
             productGroupId={product.isVariantOf?.productGroupID ?? ""}
           />
         )}
-        <WishlistButton
-          variant="full"
-          productGroupID={isVariantOf?.productGroupID}
-          productID={productID}
-        />
+        <div class="mt-2 flex flex-col gap-2">
+          <WishlistButton
+            variant="full"
+            productGroupID={isVariantOf?.productGroupID}
+            productID={productID}
+          />
+        </div>
       </div>
     </>
   );
@@ -304,6 +307,8 @@ function Details({
                       height={87.5}
                       src={img.url!}
                       alt={img.alternateName}
+                      loading="lazy"
+                      decoding="async"
                     />
                   ))}
                 </SliderDots>
@@ -329,6 +334,8 @@ function Details({
               title="meios de pagmaneto"
               width={320}
               height={100}
+              loading="lazy"
+              decoding="async"
             >
             </img>
           </div>

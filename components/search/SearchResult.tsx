@@ -90,12 +90,15 @@ function Banner({ page, banners = [] }: Props) {
 function H1Page({ page }: { page: ProductListingPage }) {
   const { breadcrumb } = page;
   const length = breadcrumb.itemListElement.length;
+
+  console.log(page.filters);
+
   if (!length) {
     return null;
   }
 
   return (
-    <>
+    <div class="text-2xl p-3 hidden sm:flex bg-slate-400 rounded-md text-white">
       {breadcrumb && (
         <h1>
           {breadcrumb
@@ -103,7 +106,7 @@ function H1Page({ page }: { page: ProductListingPage }) {
             .name}
         </h1>
       )}
-    </>
+    </div>
   );
 }
 
@@ -134,7 +137,7 @@ function Result({
 
         <div class="flex flex-row">
           <div class="flex flex-col sm:pr-3">
-            <div class="text-2xl p-3 hidden sm:flex bg-slate-400 rounded-md text-white">
+            <div>
               <H1Page page={page}></H1Page>
             </div>
             {variant === "aside" && filters.length > 0 && (

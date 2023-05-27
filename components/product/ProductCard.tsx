@@ -1,4 +1,4 @@
-import Image from "deco-sites/std/components/Image.tsx";
+import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import Avatar from "deco-sites/fashion/components/ui/Avatar.tsx";
 import WishlistIcon from "deco-sites/fashion/islands/WishlistButton.tsx";
 import { useOffer } from "deco-sites/fashion/sdk/useOffer.ts";
@@ -63,16 +63,29 @@ function ProductCard({ product, preload, itemListName }: Props) {
           <Off product={product} />
         </div>
         <a href={url} aria-label="view product">
-          <Image
-            src={front.url!}
-            alt={front.alternateName}
-            width={251}
-            height={251}
-            class="rounded w-full"
-            preload={preload}
-            loading={preload ? "eager" : "lazy"}
-            sizes="(max-width: 640px) 50vw, 20vw"
-          />
+          <Picture>
+            <Source
+              src={front.url!}
+              alt={front.alternateName}
+              width={100}
+              height={100}
+              media="(max-width: 767px)"
+            />
+            <Source
+              src={front.url!}
+              alt={front.alternateName}
+              width={200}
+              height={200}
+              media="(min-width: 767px)"
+            />
+            <img
+              class="rounded w-full"
+              src={front.url!}
+              alt={front.alternateName}
+              decoding="auto"
+              loading="lazy"
+            />
+          </Picture>
         </a>
         <figcaption class="glass card-body card-actions absolute bottom-0 left-0 w-full invisible group-hover:visible">
           <ul class="flex justify-center items-center gap-2 w-full">

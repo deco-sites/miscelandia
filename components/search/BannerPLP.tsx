@@ -28,8 +28,6 @@ export interface Props {
 function BannerUI({ banner }: { banner: Banner }) {
   const { title, subtitle, image } = banner;
 
-  console.log("3");
-
   return (
     <div class="grid grid-cols-1 grid-rows-1">
       <Picture preload class="col-start-1 col-span-1 row-start-1 row-span-1">
@@ -45,7 +43,13 @@ function BannerUI({ banner }: { banner: Banner }) {
           height={200}
           media="(min-width: 767px)"
         />
-        <img class="w-full" src={image.desktop} alt={image.alt ?? title} />
+        <img
+          class="w-full"
+          src={image.desktop}
+          alt={image.alt ?? title}
+          loading="lazy"
+          decoding="async"
+        />
       </Picture>
 
       <div class="container flex flex-col items-center justify-center sm:items-start col-start-1 col-span-1 row-start-1 row-span-1 w-full">
@@ -70,7 +74,6 @@ function BannerUI({ banner }: { banner: Banner }) {
  */
 function BannerPLP({ page, banners = [] }: Props) {
   if (!page || page?.breadcrumb.itemListElement.length === 0) {
-    console.log("1", page?.breadcrumb.itemListElement);
     return null;
   }
 
@@ -84,7 +87,6 @@ function BannerPLP({ page, banners = [] }: Props) {
   );
 
   if (!matching) {
-    console.log("2");
     return null;
   }
 

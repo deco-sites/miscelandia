@@ -21,7 +21,6 @@ function SearchButton() {
       aria-label="search icon button"
       onClick={() => {
         displaySearchbar.value = !displaySearchbar.peek();
-        console.log(displaySearchbar.peek());
       }}
     >
       <Icon id="MagnifyingGlass" width={20} height={20} strokeWidth={0.1} />
