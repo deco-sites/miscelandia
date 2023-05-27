@@ -32,7 +32,7 @@ function ProductShelf({
   return (
     <div
       id={id}
-      class="container sm:max-w-[1700px] grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr] pb-10 pt-6 px-0 sm:px-5"
+      class="container sm:max-w-[1700px] grid grid-cols-[70px_1fr_70px] grid-rows-[48px_1fr_48px_1fr] pb-10 pt-6 px-0 sm:px-5"
     >
       <h2 class="text-center lg:text-left row-start-1 col-span-full text-text-color-secord ">
         <span class="font-firaSans font-semibold text-lg uppercase tracking-widest lg:ml-4">
