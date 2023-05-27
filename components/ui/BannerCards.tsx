@@ -47,9 +47,10 @@ function BannerCard({ primaryBanner, secordBanner, thirdBanner }: Props) {
               <img
                 class="w-full"
                 loading={"lazy"}
-                preload="pazy"
+                preload="lazy"
                 src={primaryBanner.imgMobile}
                 alt={primaryBanner.alt}
+                decoding="async"
               />
             </Picture>
           </a>
@@ -78,6 +79,7 @@ function BannerCard({ primaryBanner, secordBanner, thirdBanner }: Props) {
                   preload="lazy"
                   src={secordBanner.imgMobile}
                   alt={secordBanner.alt}
+                  decoding="async"
                 />
               </Picture>
             </a>
@@ -105,6 +107,7 @@ function BannerCard({ primaryBanner, secordBanner, thirdBanner }: Props) {
                   preload="lazy"
                   src={thirdBanner.imgMobile}
                   alt={thirdBanner.alt}
+                  decoding="async"
                 />
               </Picture>
             </a>

@@ -4,7 +4,7 @@ function GlobalTags() {
   return (
     <Head>
       {/* Tailwind v3 CSS file */}
-      <link href={asset("/main.css")} rel="stylesheet"/>
+      <link href={asset("/main.css")} rel="stylesheet" />
 
       {/* Custom CSS */}
       <link href={asset("/custom.css")} rel="preload" />
