@@ -30,7 +30,7 @@ function AddToCartButton(
     <Button
       data-deco="add-to-cart"
       {...props}
-      class="bg-default border-default w-full h-8 flex items-center justify-center gap-4 btn shrink rounded-xl"
+      class="bg-default border-default hover:border-[#EC4B76] hover:bg-[#EC4B76] w-full h-8 flex items-center justify-center gap-4 btn shrink rounded-xl"
     >
       <Icon
         class="w-min"

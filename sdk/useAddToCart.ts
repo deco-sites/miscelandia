@@ -44,7 +44,7 @@ export const useAddToCart = (
     try {
       isAddingToCart.value = true;
       await addItems({
-        orderItems: [{ id: skuId, seller: sellerId, quantity }],
+        orderItems: [{ id: skuId, seller: sellerId, quantity: quantity }],
       });
 
       window.DECO_SITES_STD.sendAnalyticsEvent({
@@ -65,7 +65,7 @@ export const useAddToCart = (
     } finally {
       isAddingToCart.value = false;
     }
-  }, [skuId, sellerId]);
+  }, [skuId, sellerId, quantity]);
 
   return { onClick, disabled: loading.value, loading: isAddingToCart.value };
 };

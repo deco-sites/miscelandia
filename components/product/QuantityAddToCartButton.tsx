@@ -42,7 +42,7 @@ function QuantityAddToCartButton(
         discount={discount}
         name={name}
         productGroupId={productGroupId}
-        quantity={quantity.peek()}
+        quantity={quantity.value}
       />
     </div>
   );
