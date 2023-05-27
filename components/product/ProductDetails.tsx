@@ -51,8 +51,8 @@ export interface Props {
   infos?: Infos;
 }
 
-const WIDTH = 360;
-const HEIGHT = 360;
+const WIDTH = 250;
+const HEIGHT = 250;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
 
 /**

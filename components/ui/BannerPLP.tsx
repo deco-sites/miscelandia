@@ -47,7 +47,7 @@ function BannerUI({ banner }: { banner: Banner }) {
           class="w-full"
           src={image.desktop}
           alt={image.alt ?? title}
-          loading="lazy"
+          loading="eager"
         />
       </Picture>
 
