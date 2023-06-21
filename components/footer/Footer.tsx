@@ -111,11 +111,7 @@ export interface NewsletterProps {
   /** @description Conteudo */
   content: string;
   /** @description rede social*/
-  firstIcon?: Rede;
-  /** @description rede social*/
-  secordIcon?: Rede;
-  /** @description rede social*/
-  thirdIcon?: Rede;
+  icons: { icon: AvailableIcons; title: string; path: string }[];
 }
 
 export interface LogoFooter {
