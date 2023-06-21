@@ -41,7 +41,9 @@ export default {
         "header": "#ff0045",
         "newsletter": "#343434", // shopping cart tem isso tambem
         "footer": "#454545",
+        "light-gray": "#D3D3D3",
         "gray": "#555555",
+        "medium-gray": "#727273",
         "gray-100": "#FFFFFF",
         "default": "#ff0045",
         "text-color-primary": "#ff0045",
