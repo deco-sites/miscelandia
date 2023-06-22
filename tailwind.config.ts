@@ -49,6 +49,7 @@ export default {
         "default": "#ff0045",
         "text-color-primary": "#ff0045",
         "text-color-secord": "#666",
+        "text-color-third": "#ed1e4a",
         "text-color-white": "#ffffff",
         "links-pre-header": "#b0b0b0",
       },

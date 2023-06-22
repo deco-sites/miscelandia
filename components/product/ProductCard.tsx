@@ -115,7 +115,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
           </span> */
           }
           <div class="flex flex-wrap gap-[10px] items-center">
-            <span class="font-firaSans text-default sm:text-lg">
+            <span class="font-firaSans text-text-color-third sm:text-lg">
               {formatPrice(price, offers!.priceCurrency!)}
             </span>
             {listPrice != price && (
