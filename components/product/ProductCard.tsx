@@ -104,7 +104,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
           <h2 class="text-xs sm:text-base font-firaSans uppercase text-center text-text-color-secord overflow-hidden">
             {name}
           </h2>
-          <span class="text-sm text-gray-400">
+          <span class="text-sm text-gray-400 font-firaSans">
             {brand}
           </span>
         </div>
