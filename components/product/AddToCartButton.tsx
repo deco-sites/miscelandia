@@ -30,16 +30,16 @@ function AddToCartButton(
     <Button
       data-deco="add-to-cart"
       {...props}
-      class="bg-default border-default hover:border-[#EC4B76] hover:bg-[#EC4B76] w-full h-8 flex items-center justify-center gap-4 btn shrink rounded-xl px-1"
+      class="bg-default border-default hover:border-[#EC4B76] hover:bg-[#EC4B76]  flex items-center justify-center gap-1 btn shrink rounded-xl px-3 py-[10px] h-min"
     >
       <Icon
         class="w-min"
         id="ShoppingCarr"
-        width={25}
-        height={25}
+        width={18}
+        height={14}
       />
 
-      <span class="w-min">Comprar</span>
+      <span class="w-min !text-white !font-bold tracking-[1.2px]">Comprar</span>
     </Button>
   );
 }
