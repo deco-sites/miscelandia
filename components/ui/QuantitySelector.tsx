@@ -33,16 +33,16 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
     <div class="form-control">
       <div class="flex ">
         <Button
-          class="rounded-l-full bg-stone-500 border h-[40px] w-[40px] p-2 min-w-[40px] min-h-[40px]"
+          class="rounded-l-full bg-gray-500 border border-[#ccc] h-[40px] w-[40px] p-2 min-w-[40px] min-h-[40px] text-sm text-[#666] font-firaSans"
           onClick={decrement}
           disabled={disabled}
           loading={loading}
         >
-          -
+          －
         </Button>
         <style dangerouslySetInnerHTML={{ __html: innerStyle }} />
         <input
-          class="input border-base-content border-x-0 text-center h-[40px] px-1  rounded-none"
+          class="input  border-x-0 border-[#ccc] text-center h-[40px] px-1  rounded-none font-firaSans"
           type="number"
           inputMode="numeric"
           pattern="[0-9]*"
@@ -53,12 +53,12 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
           onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
         />
         <Button
-          class="rounded-r-full bg-stone-500 border h-[40px] w-[40px] p-2 min-w-[40px] min-h-[40px]"
+          class="rounded-r-full bg-gray-500 border border-[#ccc] h-[40px] w-[40px] p-2 min-w-[40px] min-h-[40px] text-sm text-[#666] font-firaSans"
           onClick={increment}
           disabled={disabled}
           loading={loading}
         >
-          +
+          ＋
         </Button>
       </div>
     </div>

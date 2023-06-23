@@ -184,13 +184,6 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
             productGroupId={product.isVariantOf?.productGroupID ?? ""}
           />
         )}
-        <div class="mt-2 flex flex-col gap-2">
-          <WishlistButton
-            variant="full"
-            productGroupID={isVariantOf?.productGroupID}
-            productID={productID}
-          />
-        </div>
       </div>
     </>
   );
@@ -237,15 +230,15 @@ function Details({
         </div>
 
         {/* Image Slider */}
-        <div class="relative sm:col-span-1 sm:row-start-1 sm:col-end-2 sm:row-end-3 grid grid-cols-1 lg:grid-cols-[144px_556px] lg:grid-rows-1">
-          <div class="relative lg:col-start-2">
+        <div class="relative sm:col-start-1 sm:col-end-3 sm:row-start-1 grid-cols-1  sm:row-end-3 grid  sm:grid-cols-[100px_minmax(200px,_1fr)] lgrid-rows-1">
+          <div class="relative col-start-2 h-min">
             <Slider
-              class={"gap-6"}
+              class={"gap-6 scrollbar-none max-w-[100vw]"}
               style={`grid-template-columns: repeat(${images.length}, 100%)`}
             >
               {images.map((img, index) => (
                 <Image
-                  class="snap-center min-w-[100vw] sm:min-w-[28vw] w-full max-w-[556px]"
+                  class="snap-center min-w-[100vw] sm:min-w-[28vw] sm:w-full max-w-[556px]"
                   sizes="(max-width: 556px) 100vw, 40vw"
                   style={{ aspectRatio: ASPECT_RATIO }}
                   src={img.url!}
@@ -298,11 +291,11 @@ function Details({
             ? (
               <>
                 {/* Dots */}
-                <SliderDots class="gap-2 sm:justify-start overflow-auto px-4 sm:px-0 flex-row lg:flex-col lg:col-start-1 lg:col-span-1 lg:row-start-1">
+                <SliderDots class="hidden sm:block gap-2 sm:justify-start overflow-auto px-4 sm:px-0 flex-col col-start-1 col-span-1 row-start-1 scrollbar-none">
                   {images.map((img, _) => (
                     <Image
                       style={{ aspectRatio: ASPECT_RATIO }}
-                      class="group-disabled:border-base-300 border rounded min-w-[63px] sm:min-w-[100px]"
+                      class="rounded min-w-[63px] sm:min-w-[100px]"
                       width={63}
                       height={87.5}
                       src={img.url!}
@@ -317,7 +310,7 @@ function Details({
             : ("")}
         </div>
 
-        <div class="p-2 sm:col-span-1 sm:row-span-2 sm:row-start-2">
+        <div class="p-2 sm:col-start-3 sm:col-end-4 sm:row-span-2 sm:row-start-2">
           <Price page={page} />
 
           <ProductVariant page={page} />

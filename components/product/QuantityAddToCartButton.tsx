@@ -35,15 +35,17 @@ function QuantityAddToCartButton(
           quantity.value = newQuantity;
         }}
       />
-      <AddToCartButton
-        skuId={skuId}
-        sellerId={sellerId}
-        price={price ?? 0}
-        discount={discount}
-        name={name}
-        productGroupId={productGroupId}
-        quantity={quantity.value}
-      />
+      <div class="max-h-[36px] overflow-hidden flex items-center rounded-full justify-center">
+        <AddToCartButton
+          skuId={skuId}
+          sellerId={sellerId}
+          price={price ?? 0}
+          discount={discount}
+          name={name}
+          productGroupId={productGroupId}
+          quantity={quantity.value}
+        />
+      </div>
     </div>
   );
 }

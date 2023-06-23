@@ -46,6 +46,7 @@ export default {
         "medium-gray": "#727273",
         "gray-100": "#FFFFFF",
         "gray-400": "#777777",
+        "gray-500": "#efefef",
         "default": "#ff0045",
         "text-color-primary": "#ff0045",
         "text-color-secord": "#666",
