@@ -57,6 +57,85 @@ export default {
         "firaSans": ["Fira Sans", "system-ui"],
         "Lato": ["Lato"],
       },
+      plugins: {
+        backdrop: {
+          "&::backdrop": {
+            background: "rgba(0, 0, 0, 0.5)",
+          },
+        },
+        "scroll-snap-center": {
+          "scroll-snap-align": "center",
+        },
+        "scroll-x-mandatory": {
+          "scroll-snap-type": "x mandatory",
+        },
+        "snap-x": {
+          "scroll-snap-type": "x var(--tw-scroll-snap-strictness)",
+        },
+        "snap-mandatory": {
+          "--tw-scroll-snap-strictness": "mandatory",
+        },
+        "scrollbar-none": {
+          "scrollbar-width": "none",
+          "-ms-overflow-style": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+        "details-arrow-none": {
+          "&::-webkit-details-marker": {
+            display: "none",
+          },
+        },
+        "scrollbar-black": {
+          "scrollbar-width": "auto",
+          "scrollbar-color": "#030303 #ffffff",
+
+          "&::-webkit-scrollbar": {
+            "width": "10px",
+            "height": "10px",
+          },
+
+          "&::-webkit-scrollbar-track": {
+            "background": "#ffffff",
+          },
+
+          "&::-webkit-scrollbar-thumb": {
+            "background-color": "#030303",
+            "border-radius": "10px",
+            "border": "3px solid #ffffff",
+          },
+        },
+        "scrollbar-black-tranparent-y": {
+          "scrollbar-width": "auto",
+          "scrollbar-color": "#030303 ",
+
+          "&::-webkit-scrollbar": {
+            "width": "4px",
+            "height": "0px",
+          },
+
+          "&::-webkit-scrollbar-thumb": {
+            "background-color": "#030303",
+            "border-radius": "10px",
+          },
+        },
+
+        "scrollbar-black-tranparent-x": {
+          "scrollbar-width": "auto",
+          "scrollbar-color": "#030303 ",
+
+          "&::-webkit-scrollbar": {
+            "width": "0px",
+            "height": "4px",
+          },
+
+          "&::-webkit-scrollbar-thumb": {
+            "background-color": "#030303",
+            "border-radius": "10px",
+          },
+        },
+      },
       keyframes: {
         "slide-left-frame": {
           from: { transform: "translateX(100%)" },

@@ -101,7 +101,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
       </figure>
       <div class="card-body p-1 flex flex-col gap-5">
         <div class="flex flex-col gap-[10px] items-center">
-          <h2 class="text-xs sm:text-base font-firaSans uppercase text-center text-text-color-secord overflow-hidden">
+          <h2 class="text-xs sm:text-[15px] font-firaSans uppercase text-center text-text-color-secord overflow-hidden h-[32px]">
             {name}
           </h2>
           <span class="text-sm text-gray-400 font-firaSans">
