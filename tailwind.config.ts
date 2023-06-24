@@ -57,6 +57,7 @@ export default {
       fontFamily: {
         "firaSans": ["Fira Sans", "system-ui"],
         "Lato": ["Lato"],
+        "Icon": ["Icon"],
       },
       plugins: {
         backdrop: {

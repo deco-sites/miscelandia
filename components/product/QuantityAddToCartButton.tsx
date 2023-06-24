@@ -27,7 +27,7 @@ function QuantityAddToCartButton(
   const quantity = useSignal(1);
 
   return (
-    <div class="flex w-full gap-2 items-center">
+    <div class="flex w-full gap-2 items-center py-[10px]">
       <QuantitySelector
         disabled={price === 0}
         quantity={quantity.value}

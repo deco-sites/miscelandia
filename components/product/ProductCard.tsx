@@ -133,6 +133,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
                 discount={price && listPrice ? listPrice - price : 0}
                 name={product.name ?? ""}
                 productGroupId={product.isVariantOf?.productGroupID ?? ""}
+                iconSize="sm"
               />
             </div>
             <a

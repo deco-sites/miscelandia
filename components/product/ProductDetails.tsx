@@ -5,6 +5,7 @@ import Breadcrumb from "deco-sites/fashion/components/ui/Breadcrumb.tsx";
 import Button from "deco-sites/fashion/components/ui/Button.tsx";
 import Icon from "deco-sites/fashion/components/ui/Icon.tsx";
 import Image from "deco-sites/std/components/Image.tsx";
+import { useVariantPossibilities } from "deco-sites/fashion/sdk/useVariantPossiblities.ts";
 import {
   Slider,
   SliderDots,
@@ -51,8 +52,8 @@ export interface Props {
   infos?: Infos;
 }
 
-const WIDTH = 250;
-const HEIGHT = 250;
+const WIDTH = 500;
+const HEIGHT = 500;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
 
 /**
@@ -169,6 +170,7 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
   const { product } = page;
   const { offers, productID, isVariantOf } = product;
   const { seller, price, listPrice } = useOffer(offers);
+  const possibilities = useVariantPossibilities(product);
 
   return (
     <>
@@ -183,6 +185,11 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
             name={product.name ?? ""}
             productGroupId={product.isVariantOf?.productGroupID ?? ""}
           />
+        )}
+        {possibilities["TALLA"] && (
+          <p class="text-[#666666]">
+            CLICK AQUÍ PARA GUÍA DE TALLAS
+          </p>
         )}
       </div>
     </>
@@ -217,7 +224,7 @@ function Details({
       <BreadcrumbList page={page} />
       <div
         id={id}
-        class={`container grid grid-cols-1 gap-4 sm:grid-cols-[auto_360px] sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
+        class={`container grid grid-cols-1 gap-4 sm:grid-cols-[60vw_auto] lg:grid-cols-[auto_auto] sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
           (HEIGHT / WIDTH).toFixed(2)
         }*40vw)]`}
       >
@@ -238,7 +245,7 @@ function Details({
             >
               {images.map((img, index) => (
                 <Image
-                  class="snap-center min-w-[100vw] sm:min-w-[28vw] sm:w-full max-w-[556px]"
+                  class="snap-center min-w-[100vw] sm:min-w-[50vw] sm:w-full max-w-[556px]"
                   sizes="(max-width: 556px) 100vw, 40vw"
                   style={{ aspectRatio: ASPECT_RATIO }}
                   src={img.url!}
@@ -295,7 +302,7 @@ function Details({
                   {images.map((img, _) => (
                     <Image
                       style={{ aspectRatio: ASPECT_RATIO }}
-                      class="rounded min-w-[63px] sm:min-w-[100px]"
+                      class="rounded min-w-[63px]"
                       width={63}
                       height={87.5}
                       src={img.url!}
@@ -334,40 +341,39 @@ function Details({
           </div>
 
           {/* Compra por telefone */}
-          <div class="border-t border-[#666] py-3">
+          <div class="border-t border-[#666] py-3 text-[#666]">
             <p class="text-default mb-4">Nuevo! compra por teléfono!</p>
             <a href={infos?.whatsapp.href} class="flex gap-2">
-              <Icon id="WhatsApp" width={15} height={15} strokeWidth={1}>
-              </Icon>
-              <span class="text-sm">{infos?.whatsapp.label}</span>
+              <div class="after:content-['\e92e'] after:block  after:!font-Icon after:text-[15px] after:font-thin" />
+              <p class="font-firaSans underline font-light text-base text-[#666]">
+                {infos?.whatsapp.label}
+              </p>
             </a>
             <a href={infos?.tel.href} class="flex gap-2">
-              <Icon id="Phone" width={15} height={15} strokeWidth={1}></Icon>
-              <span class="text-sm">{infos?.tel.label}</span>
+              <div class="after:content-['\e93a'] after:block  after:!font-Icon after:text-[15px] after:font-thin" />
+              <p class="font-firaSans underline font-light text-base text-[#666]">
+                {infos?.tel.label}
+              </p>
             </a>
-            <p class="text-xs mt-3">{infos?.service}</p>
+            <p class="text-xs mt-3 text-center text-[#ccc]">{infos?.service}</p>
           </div>
 
           {/* Compartilhar */}
-          <div class="w-full flex justify-center gap-3 flex-col items-center border-t border-[#666] p-3">
-            <p>Comparter</p>
-            <div class="flex flex-row gap-3">
+          <div class="w-full flex justify-center flex-col items-center border-t border-[#666] p-3 pb-2">
+            <p class="text-sm text-[#979899]">Comparte</p>
+            <div class="flex flex-row gap-3 text-[#666] items-center">
               <a href={infos?.comparte.facebook}>
-                <Icon id="Facebook" width={25} height={25} strokeWidth={1}>
-                </Icon>
+                <div class="after:content-['\e92b'] after:block  after:!font-Icon after:text-[20px] after:font-thin" />
               </a>
 
               <a class="text-text-color-secord" href={infos?.comparte.google}>
-                <Icon id="Twitter" width={25} height={25} strokeWidth={1}>
-                </Icon>
+                <div class="after:content-['\e940'] after:block  after:!font-Icon after:text-[25px] after:font-thin" />
               </a>
               <a href={infos?.comparte.twitter}>
-                <Icon id="Pinterest" width={25} height={25} strokeWidth={1}>
-                </Icon>
+                <div class="after:content-['\e92c'] after:block  after:!font-Icon after:text-[15px] after:font-thin" />
               </a>
               <a href={infos?.comparte.pinterwst}>
-                <Icon id="GooglePlus" width={25} height={25} strokeWidth={1}>
-                </Icon>
+                <div class="after:content-['\e941'] after:block  after:!font-Icon after:text-[20px] after:font-thin" />
               </a>
             </div>
           </div>

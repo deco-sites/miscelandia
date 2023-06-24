@@ -11,10 +11,20 @@ interface Props extends UseAddToCartProps {
    */
   sellerId: string;
   quantity?: number;
+  iconSize?: "lg" | "sm";
 }
 
 function AddToCartButton(
-  { skuId, sellerId, discount, price, productGroupId, name, quantity }: Props,
+  {
+    skuId,
+    sellerId,
+    discount,
+    price,
+    productGroupId,
+    name,
+    quantity,
+    iconSize = "lg",
+  }: Props,
 ) {
   const props = useAddToCart({
     skuId,
@@ -30,14 +40,17 @@ function AddToCartButton(
     <Button
       data-deco="add-to-cart"
       {...props}
-      class="bg-default border-default hover:border-[#EC4B76] hover:bg-[#EC4B76]  flex items-center justify-center gap-1 btn shrink rounded-xl px-3 py-[10px] h-min"
+      class="bg-default border-default hover:border-[#EC4B76] hover:bg-[#EC4B76]  flex flex-nowrap items-center justify-center gap-1 btn shrink rounded-xl px-3 py-[10px] h-min"
     >
-      <Icon
-        class="w-min"
-        id="ShoppingCarr"
-        width={18}
-        height={14}
-      />
+      {iconSize === "lg"
+        ? (
+          <span class="text-white after:content-['\e905'] after:block  after:!font-Icon after:text-[20px] after:font-thin">
+          </span>
+        )
+        : (
+          <span class="text-white after:content-['\e905'] after:block  after:!font-Icon after:text-[14px] after:font-thin">
+          </span>
+        )}
 
       <span class="w-min !text-white !font-bold tracking-[1.2px]">Comprar</span>
     </Button>

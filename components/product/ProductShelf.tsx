@@ -50,7 +50,7 @@ function ProductShelf({
           </div>
         ))}
       </Slider>
-
+      
       <>
         <div class="relative sm:block z-10 col-start-1 row-start-3">
           <Button
