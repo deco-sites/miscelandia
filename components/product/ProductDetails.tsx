@@ -22,6 +22,8 @@ import ProductSelector from "./ProductVariantSelector.tsx";
 import ProductImageZoom from "deco-sites/fashion/islands/ProductImageZoom.tsx";
 import WishlistButton from "../wishlist/WishlistButton.tsx";
 import QuantityAddToCartButton from "./QuantityAddToCartButton.tsx";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import ProductSize from "deco-sites/miscelandia/components/product/ProductSizes.tsx";
 
 import Off from "./Off.tsx";
 
@@ -35,6 +37,7 @@ export type Infos = {
   whatsapp: Link;
   tel: Link;
   service: string;
+  sizesImage: LiveImage;
   comparte: {
     facebook: string;
     google: string;
@@ -49,7 +52,7 @@ export interface Props {
    * @title Product view
    * @description Ask for the developer to remove this option since this is here to help development only and should not be used in production
    */
-  infos?: Infos;
+  infos: Infos;
 }
 
 const WIDTH = 500;
@@ -166,7 +169,9 @@ function ProductVariant({ page }: { page: ProductDetailsPage }) {
   );
 }
 
-function Buttons({ page }: { page: ProductDetailsPage }) {
+function Buttons(
+  { page, sizesImage }: { page: ProductDetailsPage; sizesImage: LiveImage },
+) {
   const { product } = page;
   const { offers, productID, isVariantOf } = product;
   const { seller, price, listPrice } = useOffer(offers);
@@ -186,11 +191,7 @@ function Buttons({ page }: { page: ProductDetailsPage }) {
             productGroupId={product.isVariantOf?.productGroupID ?? ""}
           />
         )}
-        {possibilities["TALLA"] && (
-          <p class="text-[#666666]">
-            CLICK AQUÍ PARA GUÍA DE TALLAS
-          </p>
-        )}
+        {possibilities["TALLA"] && <ProductSize image={sizesImage} />}
       </div>
     </>
   );
@@ -215,7 +216,7 @@ function Description({ page }: { page: ProductDetailsPage }) {
 function Details({
   page,
   infos,
-}: { page: ProductDetailsPage; infos?: Infos }) {
+}: { page: ProductDetailsPage; infos: Infos }) {
   const id = `product-image-gallery:${useId()}`;
   const { product: { image: images = [] } } = page;
 
@@ -280,14 +281,6 @@ function Details({
                     >
                       <Icon size={30} id="ChevronRight" strokeWidth={3} />
                     </Button>
-
-                    <div class="absolute top-2 right-2 bg-base-100 rounded-full">
-                      <ProductImageZoom
-                        images={images}
-                        width={1280}
-                        height={1280 * HEIGHT / WIDTH}
-                      />
-                    </div>
                   </>
                 )
                 : ("")}
@@ -322,7 +315,7 @@ function Details({
 
           <ProductVariant page={page} />
 
-          <Buttons page={page} />
+          <Buttons page={page} sizesImage={infos?.sizesImage} />
 
           <Description page={page} />
 

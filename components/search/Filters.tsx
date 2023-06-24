@@ -1,15 +1,22 @@
 import Avatar from "deco-sites/fashion/components/ui/Avatar.tsx";
 import type {
   Filter,
+  FilterRange,
   FilterToggle,
   ProductListingPage,
 } from "deco-sites/std/commerce/types.ts";
+import { useSignal } from "@preact/signals";
+import { formatPrice } from "deco-sites/fashion/sdk/format.ts";
+
 interface Props {
   filters: ProductListingPage["filters"];
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
   filter["@type"] === "FilterToggle";
+
+const isRange = (filter: Filter): filter is FilterRange =>
+  filter["@type"] === "FilterRange";
 
 function FilterValues({ key, values }: FilterToggle) {
   const flexDirection = key === "tamanho" || key === "cor"
@@ -57,6 +64,34 @@ function Filters({ filters }: Props) {
             </details>
           </li>
         ))}
+      {filters.filter(isRange).map((filter) => {
+        const rangeValue = useSignal(filter.values.max);
+        return (
+          <>
+            <li class="flex flex-col gap-4 border text-text-color-secord border-text-color-secord p-2 rounded-md bg-white ">
+              <div class=" uppercase marker:content-[''] ease-in duration-500 text-sm">
+                RANGO DE PRECIOS
+              </div>
+            </li>
+            <div class="flex flex-col items-end gap-1">
+              <input
+                type="range"
+                min={filter.values.min}
+                max={filter.values.max}
+                value={rangeValue.value}
+                class="accent-default w-full h-1"
+              />
+              <div class="flex text-sm text-[#727273] gap-1">
+                <p>{formatPrice(filter.values.min / 100, "BRL")}</p>
+                <p>–</p>
+                <p>
+                  {formatPrice(filter.values.max / 100, "BRL")}
+                </p>
+              </div>
+            </div>
+          </>
+        );
+      })}
     </ul>
   );
 }
