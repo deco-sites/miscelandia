@@ -28,33 +28,15 @@ function Navbar({ items, searchbar }: {
               style={{ minHeight: navbarHeight }}
               aria-label="Store logo"
             >
-              <image
-                width={165}
-                height={25}
-                src={asset("/logo-miscelandia.webp")}
-                title="logo mislecandia"
-                alt="miscelandia"
-              >
-              </image>
-              <span class=" text-sm self-end text-white">
-                Desde 1975
-              </span>
+              <div class="flex flex-col items-end">
+                <div class="text-white after:content-['\e900'] after:block  after:!font-Icon after:text-[22px] after:font-thin" />
+                <p class="text-[14px] leading-[10px] pr-[10px] text-white">
+                  Desde 1945
+                </p>
+              </div>
             </a>
           </div>
           <div class="flex gap-1">
-            <a
-              class="btn btn-square btn-ghost text-white"
-              href="/wishlist"
-              aria-label="Wishlist"
-            >
-              <Icon
-                id="Heart"
-                width={40}
-                height={40}
-                strokeWidth={2}
-                fill="none"
-              />
-            </a>
             <HeaderButton variant="cart" />
           </div>
         </div>

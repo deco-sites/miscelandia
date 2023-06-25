@@ -39,7 +39,7 @@ function MenuButton() {
         displayMenu.value = true;
       }}
     >
-      <Icon id="Bars3" width={40} height={40} strokeWidth={0.5} />
+      <div class="text-white after:content-['\e927'] after:block  after:!font-Icon after:text-[28px] after:font-thin" />
     </Button>
   );
 }
