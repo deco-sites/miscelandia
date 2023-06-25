@@ -1,4 +1,7 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import Icon, {
+  AvailableIcons,
+} from "deco-sites/fashion/components/ui/Icon.tsx";
 
 export interface Rede {
   /** @description Imagem */
@@ -16,11 +19,7 @@ export interface Props {
   /** @description Conteudo */
   content: string;
   /** @description rede social*/
-  firstIcon?: Rede;
-  /** @description rede social*/
-  secordIcon?: Rede;
-  /** @description rede social*/
-  thirdIcon?: Rede;
+  icons: { icon: AvailableIcons; title: string; path: string }[];
 }
 
 export interface Newsletter {
@@ -53,34 +52,19 @@ function Newsletter(
         </button>
       </form>
       <div>
-        <div class="flex flex-row gap-6">
-          <a href={newsletter?.firstIcon?.href}>
-            <image
-              src={newsletter?.firstIcon?.img}
-              alt={newsletter?.firstIcon?.alt}
-              title={newsletter?.firstIcon?.titleI}
-              width={35}
-              height={35}
-            />
-          </a>
-          <a href={newsletter?.secordIcon?.href}>
-            <image
-              src={newsletter?.secordIcon?.img}
-              alt={newsletter?.secordIcon?.alt}
-              title={newsletter?.secordIcon?.titleI}
-              width={35}
-              height={35}
-            />
-          </a>
-          <a href={newsletter?.thirdIcon?.href}>
-            <image
-              src={newsletter?.thirdIcon?.img}
-              alt={newsletter?.thirdIcon?.alt}
-              title={newsletter?.thirdIcon?.titleI}
-              width={35}
-              height={35}
-            />
-          </a>
+        <div class="flex flex-row gap-6 items-center">
+          {newsletter?.icons.map((icon) => (
+            <a
+              href={icon.path}
+              class="text-white hover:text-header transiotion-all duration-200 w-6 h-6"
+            >
+              <Icon
+                id={icon.icon}
+                strokeWidth={2}
+                class="w-full h-full"
+              />
+            </a>
+          ))}
         </div>
       </div>
     </div>

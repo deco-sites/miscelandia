@@ -27,7 +27,7 @@ function QuantityAddToCartButton(
   const quantity = useSignal(1);
 
   return (
-    <div class="flex w-full gap-2 items-center">
+    <div class="flex w-full gap-2 items-center py-[10px]">
       <QuantitySelector
         disabled={price === 0}
         quantity={quantity.value}
@@ -35,15 +35,17 @@ function QuantityAddToCartButton(
           quantity.value = newQuantity;
         }}
       />
-      <AddToCartButton
-        skuId={skuId}
-        sellerId={sellerId}
-        price={price ?? 0}
-        discount={discount}
-        name={name}
-        productGroupId={productGroupId}
-        quantity={quantity.value}
-      />
+      <div class="max-h-[36px] overflow-hidden flex items-center rounded-full justify-center">
+        <AddToCartButton
+          skuId={skuId}
+          sellerId={sellerId}
+          price={price ?? 0}
+          discount={discount}
+          name={name}
+          productGroupId={productGroupId}
+          quantity={quantity.value}
+        />
+      </div>
     </div>
   );
 }

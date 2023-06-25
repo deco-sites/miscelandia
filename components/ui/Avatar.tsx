@@ -37,7 +37,7 @@ function Avatar({ content, variant = "default" }: Props) {
   return (
     <div class="avatar placeholder">
       <div
-        class={`rounded-full bg-white border w-8  ${
+        class={`rounded-full bg-transparent border w-min h-[36px] px-[25px] ${
           colors[content] ?? colors[variant]
         } ${variants[variant]}`}
       >

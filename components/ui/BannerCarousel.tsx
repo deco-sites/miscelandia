@@ -90,8 +90,8 @@ function ProgressiveDots({ images, interval = 0 }: Props) {
         {images?.map((_) => (
           <div class="py-5">
             <div
-              class="bg-default group-disabled:${ 'bg-white'
-            } w-3 sm:w-3 h-3 rounded-full group-disabled:bg-gray"
+              class="bg-default border border-default group-disabled:${ 'bg-white'
+            } w-[10px] sm:w-[10px] h-[10px] rounded-full group-disabled:bg-transparent"
               style={{ animationDuration: `${interval}s` }}
             />
           </div>

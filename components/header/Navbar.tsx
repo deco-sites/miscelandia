@@ -63,7 +63,7 @@ function Navbar({ items, searchbar }: {
 
       {/* Desktop Version */}
       <div class="flex flex-col">
-        <div class="hidden lg:flex flex-row justify-around items-center w-full pl-2 pr-6 py-2 bg-default">
+        <div class="hidden lg:flex flex-row justify-between items-center w-full px-[40px] py-2 bg-default gap-2">
           <div class="w-auto">
             <a
               href="/"
@@ -71,38 +71,21 @@ function Navbar({ items, searchbar }: {
               style={{ minHeight: navbarHeight }}
               aria-label="Store logo"
             >
-              <image
-                width={263}
-                height={40}
-                src={asset("/logo-miscelandia.webp")}
-                title="logo mislecandia"
-                alt="miscelandia"
-              >
-                <span class=" text-base self-end text-white">Desde 1975</span>
-              </image>
+              <div class="flex flex-col items-end">
+                <div class="text-white after:content-['\e900'] after:block  after:!font-Icon after:text-[35px] after:font-thin" />
+                <p class="text-[20px] leading-[10px] pr-[10px] text-white">
+                  Desde 1945
+                </p>
+              </div>
             </a>
           </div>
           <HeaderSearchMenu searchbar={searchbar} />
           <div class="flex-none w-44 flex items-center justify-end gap-2">
             <a
-              class="btn btn-square btn-ghost text-white"
+              class="btn btn-square btn-ghost text-white after:content-['\e915'] after:block  after:!font-Icon after:text-[30px] after:font-thin"
               href="/login"
               aria-label="Log in"
             >
-              <Icon id="UserHappy" width={40} height={40} strokeWidth={0.4} />
-            </a>
-            <a
-              class="btn btn-square btn-ghost text-white"
-              href="/wishlist"
-              aria-label="Wishlist"
-            >
-              <Icon
-                id="Heart"
-                width={40}
-                height={40}
-                strokeWidth={2}
-                fill="none"
-              />
             </a>
             <HeaderButton variant="cart" />
           </div>

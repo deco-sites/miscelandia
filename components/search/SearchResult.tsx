@@ -134,7 +134,6 @@ function Result({
           breadcrumb={breadcrumb}
           displayFilter={variant === "drawer"}
         />
-
         <div class="flex flex-row">
           <div class="flex flex-col sm:pr-3">
             <div>

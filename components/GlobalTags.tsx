@@ -37,6 +37,16 @@ function GlobalTags() {
         @import
         url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
       </style>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @font-face {
+            font-family: 'Icon';
+            src: url(${asset("/fonts/Icon.woff")}) format('woff');
+          }
+      `,
+        }}
+      />
     </Head>
   );
 }
