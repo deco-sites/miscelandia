@@ -91,8 +91,6 @@ function H1Page({ page }: { page: ProductListingPage }) {
   const { breadcrumb } = page;
   const length = breadcrumb.itemListElement.length;
 
-  console.log(page.filters);
-
   if (!length) {
     return null;
   }

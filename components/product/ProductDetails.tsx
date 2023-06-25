@@ -225,7 +225,7 @@ function Details({
       <BreadcrumbList page={page} />
       <div
         id={id}
-        class={`container grid grid-cols-1 gap-4 sm:grid-cols-[60vw_auto] lg:grid-cols-[auto_auto] sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
+        class={`container grid grid-cols-1 gap-4 sm:grid-cols-[60vw_auto] xl:grid-cols-[auto_auto] sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
           (HEIGHT / WIDTH).toFixed(2)
         }*40vw)]`}
       >
