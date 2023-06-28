@@ -3917,21 +3917,6 @@
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@LogoFooter": {
       "type": "object",
       "properties": {
-        "logo": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
-          "description": "logo",
-          "title": "Logo"
-        },
-        "alt": {
-          "type": "string",
-          "description": "alt",
-          "title": "Alt"
-        },
-        "title": {
-          "type": "string",
-          "description": "title",
-          "title": "Title"
-        },
         "href": {
           "type": [
             "string",
@@ -3939,19 +3924,9 @@
           ],
           "description": "link",
           "title": "Href"
-        },
-        "text": {
-          "type": "string",
-          "description": "text",
-          "title": "Text"
         }
       },
-      "required": [
-        "logo",
-        "alt",
-        "title",
-        "text"
-      ],
+      "required": [],
       "title": "LogoFooter"
     },
     "ZGVjby1zaXRlcy9taXNjZWxhbmRpYS9jb21wb25lbnRzL2Zvb3Rlci9Gb290ZXIudHN4@ItemImg": {

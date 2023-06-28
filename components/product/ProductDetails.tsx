@@ -219,13 +219,28 @@ function Details({
 }: { page: ProductDetailsPage; infos: Infos }) {
   const id = `product-image-gallery:${useId()}`;
   const { product: { image: images = [] } } = page;
-
+  const certifications = page.product.isVariantOf?.additionalProperty.filter(
+    (item) => item.name === "CERTIFICACIONES",
+  );
+  const otherEspecifications = page.product.isVariantOf?.additionalProperty
+    .filter(
+      (item) => item.name !== "CERTIFICACIONES",
+    );
+  const especifications = otherEspecifications?.map((item) => {
+    return { name: item.name, value: item.value };
+  });
+  if (certifications?.length) {
+    especifications?.push({
+      name: "CERTIFICACIONES",
+      value: certifications.map((item) => item.value).join(", "),
+    });
+  }
   return (
     <>
       <BreadcrumbList page={page} />
       <div
         id={id}
-        class={`container grid grid-cols-1 gap-4 sm:grid-cols-[60vw_auto] xl:grid-cols-[auto_auto] sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
+        class={`container max-w-[1200px] grid grid-cols-1 gap-4 sm:grid-cols-[60vw_auto]  sm:grid-rows-[auto] sm:justify-center sm:max-h-[calc(${
           (HEIGHT / WIDTH).toFixed(2)
         }*40vw)]`}
       >
@@ -238,11 +253,11 @@ function Details({
         </div>
 
         {/* Image Slider */}
-        <div class="relative sm:col-start-1 sm:col-end-3 sm:row-start-1 grid-cols-1  sm:row-end-3 grid  sm:grid-cols-[100px_minmax(200px,_1fr)] lgrid-rows-1">
+        <div class="container relative sm:col-start-1 sm:col-end-3 sm:row-start-1 grid-cols-1  sm:row-end-3 grid  sm:grid-cols-[100px_minmax(200px,_1fr)] lg:grid-rows-1">
           <div class="relative col-start-2 h-min">
             <Slider
-              class={"gap-6 scrollbar-none max-w-[100vw]"}
-              style={`grid-template-columns: repeat(${images.length}, 100%)`}
+              class={"gap-6 scrollbar-none max-w-[100vw] items-end"}
+              style={`grid-template-columns: repeat(${images.length}, 100%) `}
             >
               {images.map((img, index) => (
                 <Image
@@ -310,7 +325,7 @@ function Details({
             : ("")}
         </div>
 
-        <div class="p-2 sm:col-start-3 sm:col-end-4 sm:row-span-2 sm:row-start-2">
+        <div class="p-2 sm:col-start-3 sm:col-end-4  sm:row-start-2">
           <Price page={page} />
 
           <ProductVariant page={page} />
@@ -370,6 +385,27 @@ function Details({
               </a>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="w-full px-10 flex justify-center">
+        <div class="w-full max-w-[1200px] rounded-lg border border-[#ddd] bg-white">
+          <div class="w-full flex justify-center text-[18px] leading-10">
+            CARACTERÍSTICAS
+          </div>
+          <table class="w-full">
+            {especifications?.map((item) => (
+              <tbody class="odd:bg-[#f7f7f7]">
+                <tr class="w-full flex gap-0.5">
+                  <td class="w-[50%] p-1 text-end pr-2 font-semibold text-base flex items-center justify-end">
+                    {item.name}
+                  </td>
+                  <td class="w-[50%] p-1 text-start pl-2">
+                    {item.value}
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
         </div>
       </div>
 
