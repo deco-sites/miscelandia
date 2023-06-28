@@ -115,16 +115,9 @@ export interface NewsletterProps {
 }
 
 export interface LogoFooter {
-  /** @description logo */
-  logo: LiveImage;
-  /** @description alt */
-  alt: string;
-  /** @description title */
-  title: string;
   /** @description link */
   href?: string;
-  /** @description text */
-  text: string;
+
 }
 
 export interface Props {
@@ -150,7 +143,10 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
             {/* Desktop view */}
             <ul class="hidden container sm:flex flex-row gap-6 justify-around">
               <li class="w-full flex justify-center items-center">
-                <a href={logo?.href} class="flex flex-col items-center gap-[10px]">
+                <a
+                  href={logo?.href}
+                  class="flex flex-col items-center gap-[10px]"
+                >
                   <div class="text-default after:content-['\e93c'] after:block  after:!font-Icon after:text-[120px] after:font-thin after:leading-[130px]" />
                   <div class="text-default after:content-['miscelandia'] after:block  after:!font-firaSans after:text-[13px] after:font-bold " />
                 </a>
@@ -178,16 +174,13 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
 
             {/* Mobile view */}
             <div class="flex justify-center items-center mb-3 w-full sm:hidden">
-              <a href={logo?.href}>
-                <image
-                  src={logo?.logo}
-                  alt={logo?.alt}
-                  title={logo?.title}
-                  width={156}
-                  height={132}
-                  loading="lazy"
-                />
-              </a>
+              <a
+                  href={logo?.href}
+                  class="flex flex-col items-center gap-[10px]"
+                >
+                  <div class="text-default after:content-['\e93c'] after:block  after:!font-Icon after:text-[120px] after:font-thin after:leading-[130px]" />
+                  <div class="text-default after:content-['miscelandia'] after:block  after:!font-firaSans after:text-[13px] after:font-bold " />
+                </a>
               {
                 /* <span>
                 {logo?.text}
