@@ -117,7 +117,6 @@ export interface NewsletterProps {
 export interface LogoFooter {
   /** @description link */
   href?: string;
-
 }
 
 export interface Props {
@@ -175,12 +174,12 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
             {/* Mobile view */}
             <div class="flex justify-center items-center mb-3 w-full sm:hidden">
               <a
-                  href={logo?.href}
-                  class="flex flex-col items-center gap-[10px]"
-                >
-                  <div class="text-default after:content-['\e93c'] after:block  after:!font-Icon after:text-[120px] after:font-thin after:leading-[130px]" />
-                  <div class="text-default after:content-['miscelandia'] after:block  after:!font-firaSans after:text-[13px] after:font-bold " />
-                </a>
+                href={logo?.href}
+                class="flex flex-col items-center gap-[10px]"
+              >
+                <div class="text-default after:content-['\e93c'] after:block  after:!font-Icon after:text-[120px] after:font-thin after:leading-[130px]" />
+                <div class="text-default after:content-['miscelandia'] after:block  after:!font-firaSans after:text-[13px] after:font-bold " />
+              </a>
               {
                 /* <span>
                 {logo?.text}
