@@ -150,15 +150,9 @@ function Footer({ sections = [], newsletter, logo, InfosFooter }: Props) {
             {/* Desktop view */}
             <ul class="hidden container sm:flex flex-row gap-6 justify-around">
               <li class="w-full flex justify-center items-center">
-                <a href={logo?.href}>
-                  <image
-                    src={logo?.logo}
-                    alt={logo?.alt}
-                    title={logo?.title}
-                    width={201}
-                    height={168}
-                    loading="lazy"
-                  />
+                <a href={logo?.href} class="flex flex-col items-center gap-[10px]">
+                  <div class="text-default after:content-['\e93c'] after:block  after:!font-Icon after:text-[120px] after:font-thin after:leading-[130px]" />
+                  <div class="text-default after:content-['miscelandia'] after:block  after:!font-firaSans after:text-[13px] after:font-bold " />
                 </a>
               </li>
               {sections.map((section) => (
