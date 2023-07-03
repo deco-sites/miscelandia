@@ -108,7 +108,7 @@ function Searchbar({
     : products;
 
   return (
-    <div class="flex flex-col p-3 lg:p-0">
+    <div class="flex flex-col p-3 lg:p-0 w-full flex-grow">
       <div class="flex items-center gap-4">
         <form
           id="searchbar"
