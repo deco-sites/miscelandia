@@ -62,7 +62,7 @@ function Navbar({ items, searchbar }: {
             </a>
           </div>
           <HeaderSearchMenu searchbar={searchbar} />
-          <div class="flex-none w-44 flex items-center justify-end gap-2">
+          <div class="flex-none flex items-center justify-end gap-2">
             <a
               class="btn btn-square btn-ghost text-white after:content-['\e915'] after:block  after:!font-Icon after:text-[30px] after:font-thin"
               href="/login"

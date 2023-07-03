@@ -57,7 +57,7 @@ function NavItem({ item }: { item: INavItem }) {
             )} */
             }
             <div class="flex items-start justify-between w-11/12 gap-6">
-              <ul class="flex items-start justify-center gap-12">
+              <ul class="flex items-start justify-between gap-12 flex-grow">
                 {children.map((node) => (
                   <li class="py-6 px-2">
                     <a
@@ -95,17 +95,19 @@ function NavItem({ item }: { item: INavItem }) {
                     </ul>
                   </li>
                 ))}
+                <li>
+                  <div class="p-6">
+                    <a href={href}>
+                      <p class="text-default text-center text-base">
+                        Ver mais
+                      </p>
+                      <p class="text-base text-center uppercase font-bold text-default">
+                        {label}
+                      </p>
+                    </a>
+                  </div>
+                </li>
               </ul>
-              <div class="p-6">
-                <a href={href}>
-                  <p class="text-default text-center text-base">
-                    Ver mais
-                  </p>
-                  <p class="text-base text-center uppercase font-bold text-default">
-                    {label}
-                  </p>
-                </a>
-              </div>
             </div>
           </div>
         )}
